@@ -40,20 +40,53 @@ export default function WaitlistModal({
   const [companySize, setCompanySize] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Synchronize state during render on prop changes without cascading effect renders
+  const [prevDefaultUserType, setPrevDefaultUserType] = useState(defaultUserType);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) {
+      setUserType(defaultUserType || 'creator');
+      setFullName('');
+      setEmail('');
+      setSocialHandle('');
+      setSocialPlatform('instagram');
+      setBrandName('');
+      setWebsite('');
+      setCompanySize('');
+      setErrors({});
+    }
+  } else if (defaultUserType !== prevDefaultUserType) {
+    setPrevDefaultUserType(defaultUserType);
+    if (defaultUserType) {
+      setUserType(defaultUserType);
+    }
+  }
+
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (defaultUserType) setUserType(defaultUserType);
-  }, [defaultUserType]);
-
+  // Lock body scroll while modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
+
+  // Handle ESC key to close
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   function validate(): boolean {
     const errs: Record<string, string> = {};
@@ -69,7 +102,11 @@ export default function WaitlistModal({
       if (!socialHandle.trim()) errs.socialHandle = 'Social handle is required';
     } else {
       if (!brandName.trim()) errs.brandName = 'Brand name is required';
-      if (!website.trim()) errs.website = 'Website is required';
+      if (!website.trim()) {
+        errs.website = 'Website is required';
+      } else if (!/^https?:\/\/.+/i.test(website.trim()) && !/^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/.test(website.trim())) {
+        errs.website = 'Enter a valid website URL';
+      }
       if (!companySize) errs.companySize = 'Select company size';
     }
 
@@ -90,12 +127,16 @@ export default function WaitlistModal({
         socialPlatform,
       });
     } else {
+      let formattedWebsite = website.trim();
+      if (!/^https?:\/\//i.test(formattedWebsite)) {
+        formattedWebsite = `https://${formattedWebsite}`;
+      }
       await onSubmit({
         fullName: fullName.trim(),
         email: email.trim().toLowerCase(),
         userType: 'brand',
         brandName: brandName.trim(),
-        website: website.trim(),
+        website: formattedWebsite,
         companySize,
       });
     }
@@ -110,8 +151,20 @@ export default function WaitlistModal({
   // Success state
   if (response?.success) {
     return (
-      <div className="modal-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true" aria-label="Waitlist registration success">
-        <div className="modal-content wm">
+      <div
+        className="modal-overlay"
+        ref={overlayRef}
+        onClick={handleOverlayClick}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Waitlist registration success"
+      >
+        <div className="modal-content wm wm--animated">
+          <button className="wm__close" onClick={onClose} aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
           <div className="wm__success">
             <div className="wm__success-icon">✓</div>
             <h2 className="wm__success-title">You're on the list!</h2>
@@ -126,8 +179,15 @@ export default function WaitlistModal({
   }
 
   return (
-    <div className="modal-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true" aria-label="Join the waitlist">
-      <div className="modal-content wm">
+    <div
+      className="modal-overlay"
+      ref={overlayRef}
+      onClick={handleOverlayClick}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Join the waitlist"
+    >
+      <div className="modal-content wm wm--animated">
         <div className="wm__header">
           <div>
             <h2 className="wm__title">Join the Waitlist</h2>
@@ -142,7 +202,7 @@ export default function WaitlistModal({
 
         {/* Error banner */}
         {response && !response.success && (
-          <div className="wm__error-banner">
+          <div className="wm__error-banner" role="alert">
             {response.code === 'DUPLICATE_EMAIL'
               ? 'This email is already on the waitlist!'
               : response.message || 'Something went wrong. Please try again.'}
@@ -152,18 +212,28 @@ export default function WaitlistModal({
         <form className="wm__form" onSubmit={handleSubmit} noValidate>
           {/* User type toggle */}
           <div className="wm__toggle-wrap">
-            <div className="toggle-group">
+            <div className="toggle-group" role="tablist" aria-label="Select role">
               <button
                 type="button"
+                role="tab"
+                aria-selected={userType === 'creator'}
                 className={`toggle-pill ${userType === 'creator' ? 'toggle-pill--active' : ''}`}
-                onClick={() => setUserType('creator')}
+                onClick={() => {
+                  setUserType('creator');
+                  setErrors({});
+                }}
               >
                 🎨 Creator
               </button>
               <button
                 type="button"
+                role="tab"
+                aria-selected={userType === 'brand'}
                 className={`toggle-pill ${userType === 'brand' ? 'toggle-pill--active' : ''}`}
-                onClick={() => setUserType('brand')}
+                onClick={() => {
+                  setUserType('brand');
+                  setErrors({});
+                }}
               >
                 🏢 Brand
               </button>
@@ -179,7 +249,10 @@ export default function WaitlistModal({
               type="text"
               placeholder="Your full name"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => {
+                setFullName(e.target.value);
+                if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
+              }}
               autoComplete="name"
             />
             <span className="form-error">{errors.fullName || ''}</span>
@@ -195,7 +268,10 @@ export default function WaitlistModal({
               type="email"
               placeholder={userType === 'brand' ? 'you@company.com' : 'you@example.com'}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
+              }}
               autoComplete="email"
             />
             <span className="form-error">{errors.email || ''}</span>
@@ -212,7 +288,10 @@ export default function WaitlistModal({
                   type="text"
                   placeholder="@yourhandle"
                   value={socialHandle}
-                  onChange={(e) => setSocialHandle(e.target.value)}
+                  onChange={(e) => {
+                    setSocialHandle(e.target.value);
+                    if (errors.socialHandle) setErrors((prev) => ({ ...prev, socialHandle: '' }));
+                  }}
                 />
                 <span className="form-error">{errors.socialHandle || ''}</span>
               </div>
@@ -244,7 +323,10 @@ export default function WaitlistModal({
                   type="text"
                   placeholder="Your brand or company"
                   value={brandName}
-                  onChange={(e) => setBrandName(e.target.value)}
+                  onChange={(e) => {
+                    setBrandName(e.target.value);
+                    if (errors.brandName) setErrors((prev) => ({ ...prev, brandName: '' }));
+                  }}
                 />
                 <span className="form-error">{errors.brandName || ''}</span>
               </div>
@@ -257,7 +339,10 @@ export default function WaitlistModal({
                   type="url"
                   placeholder="https://yourcompany.com"
                   value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
+                  onChange={(e) => {
+                    setWebsite(e.target.value);
+                    if (errors.website) setErrors((prev) => ({ ...prev, website: '' }));
+                  }}
                 />
                 <span className="form-error">{errors.website || ''}</span>
               </div>
@@ -268,7 +353,10 @@ export default function WaitlistModal({
                   id="wm-size"
                   className={`form-select ${errors.companySize ? 'form-input--error' : ''}`}
                   value={companySize}
-                  onChange={(e) => setCompanySize(e.target.value)}
+                  onChange={(e) => {
+                    setCompanySize(e.target.value);
+                    if (errors.companySize) setErrors((prev) => ({ ...prev, companySize: '' }));
+                  }}
                 >
                   <option value="" disabled>Select size</option>
                   {COMPANY_SIZES.map((s) => (

@@ -9,10 +9,11 @@
 }
 
 .navbar--scrolled {
-  background: rgba(250, 247, 249, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(23, 18, 23, 0.06);
+  background: rgba(250, 247, 249, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(123, 50, 96, 0.08);
   padding: var(--space-sm) 0;
+  box-shadow: 0 4px 20px rgba(23, 18, 23, 0.03);
 }
 
 .navbar__inner {
@@ -25,6 +26,12 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.navbar__brand:hover {
+  transform: scale(1.02);
 }
 
 .navbar__logo {
@@ -50,13 +57,33 @@
 .navbar__link {
   font-family: var(--font-heading);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-muted);
+  position: relative;
+  padding: 4px 0;
+  text-decoration: none;
   transition: color var(--transition-fast);
 }
 
+/* Left-to-right expanding underline */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-full);
+  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .navbar__link:hover {
-  color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.navbar__link:hover::after {
+  width: 100%;
 }
 
 .navbar__hamburger {
@@ -101,23 +128,28 @@
     right: 0;
     bottom: 0;
     width: 280px;
+    background: var(--color-bg);
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    padding: var(--space-5xl) var(--space-xl) var(--space-xl);
+    padding: calc(var(--space-3xl) + 20px) var(--space-xl) var(--space-xl);
     gap: var(--space-lg);
-    background: var(--color-bg);
-    box-shadow: var(--shadow-xl);
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
-    transition: transform var(--transition-base);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99;
   }
 
   .navbar__links--open {
     transform: translateX(0);
   }
 
-  .navbar__cta {
-    margin-top: var(--space-md);
+  .navbar__link {
+    font-size: 1.125rem;
     width: 100%;
+  }
+
+  .navbar__cta {
+    width: 100%;
+    text-align: center;
   }
 }

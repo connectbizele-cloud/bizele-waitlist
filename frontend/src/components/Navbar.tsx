@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MagneticButton from './MagneticButton';
 import './Navbar.css';
 
 interface NavbarProps {
@@ -24,15 +25,21 @@ export default function Navbar({ onJoinClick }: NavbarProps) {
         </a>
 
         <div className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
-          <a href="#problem" className="navbar__link" onClick={() => setMobileOpen(false)}>Why Bizele</a>
           <a href="#platform" className="navbar__link" onClick={() => setMobileOpen(false)}>Platform</a>
           <a href="#how-it-works" className="navbar__link" onClick={() => setMobileOpen(false)}>How It Works</a>
-          <button
-            className="btn btn--primary btn--sm navbar__cta"
-            onClick={() => { onJoinClick(); setMobileOpen(false); }}
+          <a href="#join" className="navbar__link" onClick={() => setMobileOpen(false)}>Early Access</a>
+
+          <MagneticButton
+            className="btn--primary btn--sm navbar__cta"
+            onClick={() => {
+              onJoinClick();
+              setMobileOpen(false);
+            }}
+            strength={0.2}
+            ariaLabel="Join Waitlist"
           >
             Join Waitlist
-          </button>
+          </MagneticButton>
         </div>
 
         <button

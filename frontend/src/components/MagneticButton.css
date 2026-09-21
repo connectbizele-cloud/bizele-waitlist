@@ -1,0 +1,62 @@
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.18s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease, background 0.25s ease;
+  will-change: transform;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.magnetic-btn__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.magnetic-btn__glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.magnetic-btn--hover .magnetic-btn__glow {
+  opacity: 1;
+}
+
+.magnetic-btn--hover svg {
+  transform: translateX(3px);
+}
+
+.magnetic-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.magnetic-btn--hover {
+  box-shadow: 0 10px 28px rgba(123, 50, 96, 0.32), 0 0 15px rgba(200, 106, 134, 0.3);
+}
+
+.magnetic-btn--active {
+  box-shadow: 0 4px 12px rgba(123, 50, 96, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-btn {
+    transform: none !important;
+    transition: none !important;
+  }
+  .magnetic-btn--hover svg {
+    transform: none !important;
+  }
+}

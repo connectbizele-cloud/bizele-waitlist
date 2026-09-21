@@ -1,6 +1,28 @@
 .final-cta {
-  padding: var(--space-4xl) 0;
   text-align: center;
+  padding: var(--space-5xl) 0;
+  position: relative;
+  overflow: hidden;
+  --grad-x: 50%;
+  --grad-y: 50%;
+}
+
+/* Interactive cursor-reactive brand gradient mesh */
+.final-cta__ambient-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 500px at var(--grad-x) var(--grad-y),
+    rgba(123, 50, 96, 0.28) 0%,
+    rgba(141, 38, 55, 0.15) 35%,
+    rgba(23, 18, 23, 0) 70%
+  );
+  pointer-events: none;
+  transition: background 0.12s ease-out;
+  z-index: 1;
 }
 
 .final-cta__inner {
@@ -8,24 +30,77 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-lg);
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.final-cta__live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(200, 106, 134, 0.12);
+  border: 1px solid rgba(200, 106, 134, 0.25);
+  color: var(--color-accent);
+}
+
+.final-cta__live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+  animation: dotPulse 2s infinite;
 }
 
 .final-cta__title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--color-white);
+  margin: 0;
 }
 
 .final-cta__desc {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  color: var(--color-text-dark-muted);
   line-height: 1.6;
-  max-width: 400px;
+  max-width: 480px;
+  margin: 0;
 }
 
-.final-cta__desc strong {
-  color: var(--color-accent);
-  font-weight: 700;
+.final-cta__count-highlight {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.final-cta__button-wrap {
+  margin-top: var(--space-xs);
+}
+
+.final-cta__btn {
+  min-width: 240px;
+}
+
+.final-cta__footnote {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .final-cta {
+    padding: var(--space-4xl) 0;
+  }
+  .final-cta__btn {
+    width: 100%;
+  }
 }
