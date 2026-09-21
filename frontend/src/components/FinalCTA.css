@@ -1,0 +1,31 @@
+.final-cta {
+  padding: var(--space-4xl) 0;
+  text-align: center;
+}
+
+.final-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.final-cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+}
+
+.final-cta__desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.final-cta__desc strong {
+  color: var(--color-accent);
+  font-weight: 700;
+}
