@@ -22,6 +22,8 @@ app = FastAPI(title="Bizele Waitlist API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        os.getenv("FRONTEND_URL", "http://bizele.in"),
+        os.getenv("FRONTEND_URL", "http://dev.bizele.in"),
         os.getenv("FRONTEND_URL", "http://localhost:5173"),
     ],
     allow_credentials=True,
