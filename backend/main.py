@@ -19,13 +19,24 @@ load_dotenv()
 app = FastAPI(title="Bizele Waitlist API", version="1.0.0")
 
 # CORS — allow frontend origin
+cors_origins_env = os.getenv("FRONTEND_URL", "")
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://bizele.in",
+    "https://dev.bizele.in",
+    "https://bizele-waitlist.pages.dev",
+]
+if cors_origins_env:
+    for o in cors_origins_env.split(","):
+        cleaned = o.strip()
+        if cleaned and cleaned not in allowed_origins:
+            allowed_origins.append(cleaned)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        os.getenv("FRONTEND_URL", "http://bizele.in"),
-        os.getenv("FRONTEND_URL", "http://dev.bizele.in"),
-        os.getenv("FRONTEND_URL", "http://localhost:5173"),
-    ],
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https://.*\.pages\.dev",
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
