@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: var(--space-md) 0;
+  padding: var(--space-fib-3) 0; /* 21px Fibonacci vertical padding */
   transition: all var(--transition-base);
 }
 
@@ -12,7 +12,7 @@
   background: rgba(250, 247, 249, 0.94);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(123, 50, 96, 0.08);
-  padding: var(--space-sm) 0;
+  padding: var(--space-fib-2) 0; /* 13px Fibonacci vertical padding */
   box-shadow: 0 4px 20px rgba(23, 18, 23, 0.03);
 }
 
@@ -25,7 +25,7 @@
 .navbar__brand {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-fib-1); /* 8px */
   text-decoration: none;
   transition: transform var(--transition-fast);
 }
@@ -89,11 +89,16 @@
 .navbar__hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   gap: 5px;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 8px;
   cursor: pointer;
+  border-radius: var(--radius-sm);
 }
 
 .navbar__hamburger span {
@@ -151,5 +156,53 @@
   .navbar__cta {
     width: 100%;
     text-align: center;
+  }
+}
+
+/* --- Role Indicator --- */
+.navbar__role-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.navbar__role-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.navbar__switch-btn {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: none;
+  border: 1px solid rgba(123, 50, 96, 0.18);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.7rem;
+  min-height: 28px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.navbar__switch-btn:hover {
+  background: rgba(123, 50, 96, 0.06);
+  border-color: var(--color-primary);
+}
+
+.navbar__switch-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .navbar__role-indicator {
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    border-top: 1px solid rgba(23, 18, 23, 0.06);
+    margin-top: var(--space-xs);
   }
 }

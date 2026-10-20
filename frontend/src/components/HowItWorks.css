@@ -2,26 +2,28 @@
   background: var(--color-bg);
   position: relative;
   overflow: hidden;
+  padding: var(--space-fib-6) 0; /* 89px Fibonacci vertical rhythm */
 }
 
 .how-it-works__header {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto var(--space-2xl);
+  max-width: 660px;
+  margin: 0 auto var(--space-fib-5); /* 55px */
 }
 
 .how-it-works__sub {
-  font-size: 0.9375rem;
+  font-size: var(--font-size-base);
   color: var(--color-text-muted);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-fib-1);
+  line-height: 1.618;
 }
 
 /* 4 Stage Stepper */
 .how-it-works__stepper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
+  gap: var(--space-fib-3); /* 21px Fibonacci gap */
+  margin-bottom: var(--space-fib-5); /* 55px */
 }
 
 .how-it-works__step-btn {
@@ -29,11 +31,13 @@
   border: none;
   text-align: left;
   cursor: pointer;
-  padding: 0;
+  padding: 6px 4px;
+  min-height: 44px; /* Fitts's Law touch minimum */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-fib-1);
   transition: opacity var(--transition-fast);
+  border-radius: var(--radius-sm);
 }
 
 .how-it-works__step-bar {
@@ -61,16 +65,16 @@
 
 .how-it-works__step-num {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 800;
   color: var(--color-primary);
 }
 
 .how-it-works__step-title {
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--color-text-muted);
   transition: color var(--transition-fast);
 }
@@ -79,18 +83,18 @@
   color: var(--color-text);
 }
 
-/* Dynamic Stage Display Container */
+/* Dynamic Stage Display Container: Golden Ratio Grid (38.2% : 61.8%) */
 .how-it-works__stage-display {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: var(--space-2xl);
+  grid-template-columns: 1fr 1.618fr; /* Golden Ratio proportion */
+  gap: var(--space-fib-5); /* 55px Fibonacci separation */
   align-items: center;
   background: var(--color-white);
   border: 1px solid rgba(123, 50, 96, 0.12);
   border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
-  box-shadow: var(--shadow-md);
-  min-height: 380px;
+  padding: var(--space-fib-4); /* 34px Fibonacci card padding */
+  box-shadow: 0 16px 44px rgba(123, 50, 96, 0.07), 0 2px 8px rgba(23, 18, 23, 0.03);
+  min-height: 400px;
 }
 
 /* Left Details */
@@ -409,10 +413,10 @@
   opacity: 0.85;
 }
 
-.visual-growth-bar--1 { height: 25%; }
-.visual-growth-bar--2 { height: 45%; }
-.visual-growth-bar--3 { height: 75%; }
-.visual-growth-bar--4 { height: 100%; box-shadow: 0 0 16px rgba(200, 106, 134, 0.6); }
+.visual-growth-bar--1 { height: 21%; } /* Fibonacci: 21 */
+.visual-growth-bar--2 { height: 34%; } /* Fibonacci: 34 */
+.visual-growth-bar--3 { height: 55%; } /* Fibonacci: 55 */
+.visual-growth-bar--4 { height: 89%; box-shadow: 0 0 16px rgba(200, 106, 134, 0.65); } /* Fibonacci: 89 */
 
 /* Responsive */
 @media (max-width: 820px) {

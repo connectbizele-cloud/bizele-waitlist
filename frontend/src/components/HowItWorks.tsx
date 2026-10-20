@@ -60,6 +60,18 @@ export default function HowItWorks() {
 
   const current = STAGES[activeStage];
 
+  const handleKeyDown = (e: React.KeyboardEvent, idx: number) => {
+    if (e.key === 'ArrowRight') {
+      const next = (idx + 1) % STAGES.length;
+      setActiveStage(next);
+      setIsPaused(true);
+    } else if (e.key === 'ArrowLeft') {
+      const prev = (idx - 1 + STAGES.length) % STAGES.length;
+      setActiveStage(prev);
+      setIsPaused(true);
+    }
+  };
+
   return (
     <section
       className="section how-it-works"
@@ -77,17 +89,21 @@ export default function HowItWorks() {
         </div>
 
         {/* 4 Stage Stepper Navigation */}
-        <div className="how-it-works__stepper" role="tablist">
+        <div className="how-it-works__stepper" role="tablist" aria-label="Collaboration stages">
           {STAGES.map((stage, idx) => (
             <button
               key={stage.id}
               role="tab"
+              id={`stage-tab-${stage.id}`}
+              aria-controls={`stage-panel-${stage.id}`}
               aria-selected={activeStage === idx}
+              tabIndex={activeStage === idx ? 0 : -1}
               className={`how-it-works__step-btn ${activeStage === idx ? 'how-it-works__step-btn--active' : ''}`}
               onClick={() => {
                 setActiveStage(idx);
                 setIsPaused(true);
               }}
+              onKeyDown={(e) => handleKeyDown(e, idx)}
             >
               <div className="how-it-works__step-bar">
                 <span
@@ -106,7 +122,12 @@ export default function HowItWorks() {
         </div>
 
         {/* Dynamic Stage Interactive Visualizer */}
-        <div className="how-it-works__stage-display">
+        <div
+          className="how-it-works__stage-display"
+          role="tabpanel"
+          id={`stage-panel-${current.id}`}
+          aria-labelledby={`stage-tab-${current.id}`}
+        >
           {/* Left: Content Details */}
           <div className="how-it-works__stage-content">
             <span className="how-it-works__stage-badge">{current.badge}</span>

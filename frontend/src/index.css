@@ -30,22 +30,43 @@
   --gradient-brand-ext: linear-gradient(135deg, #713A72 0%, #7B3260 45%, #8D2637 100%);
   --gradient-dark: linear-gradient(180deg, #120D12 0%, #1A1218 100%);
 
-  /* Typography */
+  /* Golden Ratio Visual Proportion System (φ = 1.618) */
+  --phi: 1.618;
+  --phi-inv: 0.618;
+  --phi-minor: 0.382;
+
+  /* Typography Scale (Golden Ratio derived around base 16px) */
   --font-heading: 'Manrope', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
+  --font-size-xs: 0.8125rem;  /* 13px (Fibonacci) - meta / pill tags */
+  --font-size-sm: 0.875rem;   /* 14px - labels, secondary actions */
+  --font-size-base: 1rem;     /* 16px - body standard */
+  --font-size-md: 1.125rem;   /* 18px - lead text */
+  --font-size-h3: 1.625rem;   /* 26px ≈ 16 * 1.618 */
+  --font-size-h2: 2.625rem;   /* 42px ≈ 26 * 1.618 */
+  --font-size-h1: 4.25rem;    /* 68px ≈ 42 * 1.618 */
 
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 6rem;
-  --space-5xl: 8rem;
+  /* Fibonacci Spacing System (Base: 8px) */
+  --space-fib-1: 8px;   /* icon / micro internal padding */
+  --space-fib-2: 13px;  /* compact item spacing */
+  --space-fib-3: 21px;  /* input / card content padding */
+  --space-fib-4: 34px;  /* component separation */
+  --space-fib-5: 55px;  /* content group separation */
+  --space-fib-6: 89px;  /* standard section vertical breathing */
+  --space-fib-7: 144px; /* major section / hero breathing room */
 
-  /* Radii */
+  /* Semantic spacing aliases mapped to Fibonacci */
+  --space-xs: var(--space-fib-1);  /* 8px */
+  --space-sm: var(--space-fib-2);  /* 13px */
+  --space-md: var(--space-fib-3);  /* 21px */
+  --space-lg: var(--space-fib-4);  /* 34px */
+  --space-xl: var(--space-fib-5);  /* 55px */
+  --space-2xl: var(--space-fib-6); /* 89px */
+  --space-3xl: var(--space-fib-7); /* 144px */
+  --space-4xl: calc(var(--space-fib-6) + var(--space-fib-7)); /* 233px */
+  --space-5xl: calc(var(--space-fib-7) * 1.618); /* ~233px */
+
+  /* Radii (Fibonacci-adjacent) */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -58,13 +79,13 @@
   --shadow-lg: 0 8px 30px rgba(23, 18, 23, 0.12);
   --shadow-xl: 0 16px 50px rgba(123, 50, 96, 0.15);
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  /* Transitions (Consistent HCI timing: 200-300ms hover, 500ms reveal) */
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 450ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Layout */
-  --container-max: 1200px;
+  --container-max: 1240px;
   --container-narrow: 800px;
 }
 
@@ -77,21 +98,44 @@ html {
 
 body {
   font-family: var(--font-body);
+  font-size: var(--font-size-base);
   color: var(--color-text);
   background-color: var(--color-bg);
-  line-height: 1.6;
+  line-height: 1.618; /* Golden ratio line height for optimal readability */
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: 1.15;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 5.2vw, var(--font-size-h1));
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, var(--font-size-h2));
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, var(--font-size-h3));
+  line-height: 1.3;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Accessible focus ring across all keyboard interactions */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 img {
@@ -116,7 +160,7 @@ input, select, textarea {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-fib-4); /* 34px side padding */
 }
 
 .container--narrow {
@@ -135,9 +179,9 @@ input, select, textarea {
   border: 0;
 }
 
-/* --- Section Base --- */
+/* --- Section Base (Fibonacci Vertical Rhythm) --- */
 .section {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-2xl) 0; /* 89px section spacing */
 }
 
 .section--dark {
@@ -147,54 +191,56 @@ input, select, textarea {
 
 .section__label {
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
+  display: inline-block;
 }
 
 .section__title {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .section__subtitle {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: clamp(1rem, 1.4vw, var(--font-size-md));
   color: var(--color-text-muted);
-  max-width: 600px;
-  line-height: 1.7;
+  max-width: 620px;
+  line-height: 1.618;
 }
 
 .section--dark .section__subtitle {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.68);
 }
 
-/* --- Buttons --- */
+/* --- Buttons (Fitts's Law: Min 44px hit target) --- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-sm);
   border-radius: var(--radius-full);
-  padding: 0.75rem 1.75rem;
+  padding: 0.65rem 1.625rem;
+  min-height: 44px; /* Fitts's law interactive target */
   transition: all var(--transition-base);
   white-space: nowrap;
+  user-select: none;
 }
 
 .btn--primary {
   background: var(--gradient-brand);
   color: var(--color-white);
-  box-shadow: 0 4px 16px rgba(123, 50, 96, 0.3);
+  box-shadow: 0 4px 16px rgba(123, 50, 96, 0.32);
 }
 
 .btn--primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(123, 50, 96, 0.4);
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px rgba(123, 50, 96, 0.42);
 }
 
 .btn--primary:active {
@@ -215,22 +261,25 @@ input, select, textarea {
 .btn--ghost {
   background: rgba(255, 255, 255, 0.08);
   color: var(--color-white);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .btn--ghost:hover {
   background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .btn--lg {
-  padding: 0.9375rem 2.25rem;
+  min-height: 52px; /* Generous primary action target */
+  padding: 0.875rem 2.125rem; /* ~14px 34px (Fibonacci) */
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .btn--sm {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.8125rem;
+  min-height: 38px;
+  padding: 0.45rem 1.15rem;
+  font-size: var(--font-size-xs);
 }
 
 .btn:disabled {
@@ -243,21 +292,23 @@ input, select, textarea {
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-fib-1); /* 8px */
 }
 
 .form-label {
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
   color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
 .form-input,
 .form-select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 0.9375rem;
+  min-height: 44px; /* Fitts's Law interactive touch minimum */
+  padding: 0.65rem 0.875rem; /* ~10px 14px */
+  font-size: var(--font-size-sm);
   border: 1.5px solid rgba(23, 18, 23, 0.12);
   border-radius: var(--radius-md);
   background: var(--color-white);
@@ -269,12 +320,12 @@ input, select, textarea {
 .form-select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(123, 50, 96, 0.1);
+  box-shadow: 0 0 0 3px rgba(123, 50, 96, 0.12);
 }
 
 .form-input::placeholder {
   color: var(--color-text-muted);
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
 .form-input--error {
@@ -284,15 +335,16 @@ input, select, textarea {
 .form-error {
   font-size: 0.75rem;
   color: var(--color-secondary);
-  min-height: 1rem;
+  font-weight: 500;
+  min-height: 1.15rem;
 }
 
 /* --- Card --- */
 .card {
   background: var(--color-white);
-  border: 1px solid rgba(23, 18, 23, 0.06);
+  border: 1px solid rgba(23, 18, 23, 0.08);
   border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
+  padding: var(--space-fib-4); /* 34px Fibonacci card padding */
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
@@ -466,5 +518,44 @@ input, select, textarea {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Role-specific theming --- */
+[data-role="creator"] {
+  --role-accent: #C86A86;
+  --role-glow: rgba(200, 106, 134, 0.15);
+}
+
+[data-role="business"] {
+  --role-accent: #8D2637;
+  --role-glow: rgba(141, 38, 55, 0.15);
+}
+
+/* --- Site Entrance Animation (after role confirmation) --- */
+.site-entrance .navbar,
+.site-entrance .hero,
+.site-entrance .platform,
+.site-entrance .how-it-works,
+.site-entrance .final-cta,
+.site-entrance .footer {
+  animation: site-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.site-entrance .navbar       { animation-delay: 0ms; }
+.site-entrance .hero         { animation-delay: 80ms; }
+.site-entrance .platform     { animation-delay: 160ms; }
+.site-entrance .how-it-works { animation-delay: 240ms; }
+.site-entrance .final-cta    { animation-delay: 320ms; }
+.site-entrance .footer       { animation-delay: 400ms; }
+
+@keyframes site-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

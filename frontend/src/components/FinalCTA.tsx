@@ -1,5 +1,7 @@
 import { useRef, useState, type PointerEvent } from 'react';
 import MagneticButton from './MagneticButton';
+import { useRole } from '../context/RoleContext';
+import { roleConfig } from '../config/roleConfig';
 import './FinalCTA.css';
 
 interface FinalCTAProps {
@@ -8,6 +10,9 @@ interface FinalCTAProps {
 }
 
 export default function FinalCTA({ count, onJoinClick }: FinalCTAProps) {
+  const { role } = useRole();
+  const ctaContent = role ? roleConfig[role].cta : null;
+
   const containerRef = useRef<HTMLElement>(null);
   const [gradientPos, setGradientPos] = useState({ x: 50, y: 50 });
 
@@ -40,16 +45,17 @@ export default function FinalCTA({ count, onJoinClick }: FinalCTAProps) {
       <div className="container final-cta__inner">
         <div className="final-cta__live-pill">
           <span className="final-cta__live-dot" />
-          <span>JOIN WAVE ONE</span>
+          <span>{ctaContent?.pill || 'JOIN WAVE ONE'}</span>
         </div>
 
         <h2 className="final-cta__title">
-          Don't Miss the First Wave
+          {ctaContent?.title || "Don't Miss the First Wave"}
         </h2>
 
         <p className="final-cta__desc">
-          <strong className="final-cta__count-highlight">{count.toLocaleString()}</strong> people already waiting to connect.
-          Be first in line when Bizele goes live.
+          <strong className="final-cta__count-highlight">{count.toLocaleString()}</strong>{' '}
+          {ctaContent?.countSuffix || 'people already waiting to connect.'}{' '}
+          {ctaContent?.callToAction || 'Be first in line when Bizele goes live.'}
         </p>
 
         <div className="final-cta__button-wrap">

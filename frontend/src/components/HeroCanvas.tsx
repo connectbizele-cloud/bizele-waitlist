@@ -140,7 +140,9 @@ export default function HeroCanvas() {
       ['ai', 'data'],
     ];
 
-    const handlePointerMove = (e: PointerEvent) => {
+    const container = canvas.parentElement || canvas;
+
+    const handlePointerMove = (e: MouseEvent | PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current.targetX = e.clientX - rect.left;
       mouseRef.current.targetY = e.clientY - rect.top;
@@ -151,8 +153,8 @@ export default function HeroCanvas() {
       mouseRef.current.active = false;
     };
 
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerleave', handlePointerLeave);
+    container.addEventListener('pointermove', handlePointerMove as EventListener);
+    container.addEventListener('pointerleave', handlePointerLeave as EventListener);
 
     let time = 0;
 
@@ -304,8 +306,8 @@ export default function HeroCanvas() {
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerleave', handlePointerLeave);
+      container.removeEventListener('pointermove', handlePointerMove as EventListener);
+      container.removeEventListener('pointerleave', handlePointerLeave as EventListener);
       observer.disconnect();
     };
   }, []);

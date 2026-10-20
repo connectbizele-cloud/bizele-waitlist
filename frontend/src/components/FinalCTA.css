@@ -1,6 +1,6 @@
 .final-cta {
   text-align: center;
-  padding: var(--space-5xl) 0;
+  padding: var(--space-fib-6) 0; /* 89px Fibonacci vertical rhythm */
   position: relative;
   overflow: hidden;
   --grad-x: 50%;
@@ -29,10 +29,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-fib-3); /* 21px Gestalt stack gap */
   position: relative;
   z-index: 2;
-  max-width: 620px;
+  max-width: 640px;
 }
 
 .final-cta__live-pill {
@@ -40,13 +40,13 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 4px 14px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: rgba(200, 106, 134, 0.12);
-  border: 1px solid rgba(200, 106, 134, 0.25);
+  background: rgba(200, 106, 134, 0.14);
+  border: 1px solid rgba(200, 106, 134, 0.3);
   color: var(--color-accent);
 }
 
@@ -60,7 +60,7 @@
 }
 
 .final-cta__title {
-  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-size: clamp(2rem, 4.5vw, var(--font-size-h2));
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -69,10 +69,10 @@
 }
 
 .final-cta__desc {
-  font-size: clamp(1rem, 1.3vw, 1.125rem);
-  color: var(--color-text-dark-muted);
-  line-height: 1.6;
-  max-width: 480px;
+  font-size: clamp(1rem, 1.3vw, var(--font-size-md));
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.618;
+  max-width: 500px;
   margin: 0;
 }
 
@@ -83,22 +83,24 @@
 }
 
 .final-cta__button-wrap {
-  margin-top: var(--space-xs);
+  margin-top: var(--space-fib-1); /* 8px */
 }
 
 .final-cta__btn {
-  min-width: 240px;
+  min-width: 250px;
+  min-height: 52px; /* Fitts's Law generous target */
+  font-size: 1rem;
 }
 
 .final-cta__footnote {
-  font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 
 @media (max-width: 640px) {
   .final-cta {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-fib-5) 0;
   }
   .final-cta__btn {
     width: 100%;

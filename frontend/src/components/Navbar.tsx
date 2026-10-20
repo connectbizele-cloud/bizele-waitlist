@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import MagneticButton from './MagneticButton';
+import { useRole } from '../context/RoleContext';
 import './Navbar.css';
 
 interface NavbarProps {
   onJoinClick: () => void;
+  onSwitchRole?: () => void;
 }
 
-export default function Navbar({ onJoinClick }: NavbarProps) {
+export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
+  const { role } = useRole();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -28,6 +31,21 @@ export default function Navbar({ onJoinClick }: NavbarProps) {
           <a href="#platform" className="navbar__link" onClick={() => setMobileOpen(false)}>Platform</a>
           <a href="#how-it-works" className="navbar__link" onClick={() => setMobileOpen(false)}>How It Works</a>
           <a href="#join" className="navbar__link" onClick={() => setMobileOpen(false)}>Early Access</a>
+
+          {role && onSwitchRole && (
+            <div className="navbar__role-indicator">
+              <span className="navbar__role-label">
+                {role === 'creator' ? '🎨 Creator' : '🏢 Business'}
+              </span>
+              <button
+                className="navbar__switch-btn"
+                onClick={() => { onSwitchRole(); setMobileOpen(false); }}
+                aria-label="Switch role"
+              >
+                Switch
+              </button>
+            </div>
+          )}
 
           <MagneticButton
             className="btn--primary btn--sm navbar__cta"

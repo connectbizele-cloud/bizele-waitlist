@@ -23,26 +23,44 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: var(--space-xl) var(--space-xl) 0;
+  padding: var(--space-fib-4) var(--space-fib-4) 0; /* 34px Fibonacci padding */
+}
+
+.wm__step-indicator {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(123, 50, 96, 0.08);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
 }
 
 .wm__title {
-  font-size: 1.375rem;
+  font-size: var(--font-size-h3);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin: 0;
 }
 
 .wm__desc {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   margin-top: 4px;
+  line-height: 1.5;
 }
 
 .wm__close {
   background: none;
   border: none;
   color: var(--color-text-muted);
-  padding: 6px;
+  padding: 8px;
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
   cursor: pointer;
@@ -53,6 +71,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .wm__close:hover {
@@ -62,13 +82,13 @@
 }
 
 .wm__error-banner {
-  margin: var(--space-md) var(--space-xl) 0;
-  padding: var(--space-sm) var(--space-md);
-  font-size: 0.8125rem;
-  font-weight: 500;
+  margin: var(--space-fib-2) var(--space-fib-4) 0;
+  padding: var(--space-fib-2) var(--space-fib-3);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
   color: var(--color-secondary);
   background: rgba(141, 38, 55, 0.08);
-  border: 1px solid rgba(141, 38, 55, 0.16);
+  border: 1px solid rgba(141, 38, 55, 0.18);
   border-radius: var(--radius-md);
   animation: fadeInDown 0.2s ease-out;
 }
@@ -84,22 +104,123 @@
   }
 }
 
+/* STEP 1: Tactile Role Selection Cards */
+.wm__step-roles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-fib-2); /* 13px */
+  padding: var(--space-fib-4); /* 34px */
+}
+
+.wm__role-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-fib-3); /* 21px */
+  padding: var(--space-fib-3); /* 21px */
+  background: var(--color-bg);
+  border: 1.5px solid rgba(123, 50, 96, 0.12);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-base);
+  position: relative;
+  min-height: 80px;
+}
+
+.wm__role-card:hover {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(123, 50, 96, 0.12);
+  transform: translateY(-2px);
+}
+
+.wm__role-card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.wm__role-card-body {
+  flex-grow: 1;
+}
+
+.wm__role-card-title {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 3px;
+}
+
+.wm__role-card-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.wm__role-card-arrow {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  opacity: 0.7;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.wm__role-card:hover .wm__role-card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* STEP 2: Role Switch Bar & Details */
+.wm__role-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(123, 50, 96, 0.05);
+  border: 1px solid rgba(123, 50, 96, 0.1);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-fib-1);
+}
+
+.wm__role-active-badge {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.wm__change-role-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 2px 6px;
+}
+
+.wm__change-role-btn:hover {
+  color: var(--color-primary);
+}
+
+.wm__req {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
 .wm__form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  padding: var(--space-lg) var(--space-xl) var(--space-xl);
-}
-
-.wm__toggle-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--space-xs);
+  gap: 10px;
+  padding: 12px 26px 24px;
 }
 
 .wm__submit {
-  margin-top: var(--space-sm);
+  margin-top: 4px;
   width: 100%;
+  min-height: 48px;
 }
 
 /* Success state */

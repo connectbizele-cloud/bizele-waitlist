@@ -1,0 +1,17 @@
+/* Cookie Policy page specific overrides */
+.cookie-policy__settings-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.cookie-policy__settings-link:hover {
+  color: var(--color-secondary);
+}

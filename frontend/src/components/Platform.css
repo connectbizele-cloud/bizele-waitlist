@@ -1,49 +1,51 @@
 .platform {
   position: relative;
   overflow: hidden;
+  padding: var(--space-fib-6) 0; /* 89px Fibonacci section breathing */
 }
 
 .platform__header {
   text-align: center;
-  max-width: 620px;
-  margin: 0 auto var(--space-xl);
+  max-width: 680px;
+  margin: 0 auto var(--space-fib-4); /* 34px */
 }
 
 .platform__sub {
-  font-size: 0.9375rem;
-  color: var(--color-text-dark-muted);
-  margin-top: var(--space-xs);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-fib-1);
+  line-height: 1.618;
 }
 
-/* Central connection beam */
+/* Central connection beam (Gestalt Continuity) */
 .platform__bridge {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
-  margin: 0 auto var(--space-xl);
-  max-width: 580px;
+  gap: var(--space-fib-3); /* 21px */
+  margin: 0 auto var(--space-fib-4); /* 34px */
+  max-width: 600px;
 }
 
 .platform__node {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 6px 16px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-text-dark-muted);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.08em;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--transition-base);
 }
 
 .platform__node--active {
-  background: rgba(200, 106, 134, 0.15);
-  border-color: rgba(200, 106, 134, 0.4);
+  background: rgba(200, 106, 134, 0.16);
+  border-color: rgba(200, 106, 134, 0.45);
   color: var(--color-white);
   box-shadow: 0 0 16px rgba(200, 106, 134, 0.25);
 }
@@ -85,7 +87,7 @@
   justify-content: center;
   background: #171217;
   border: 1px solid rgba(200, 106, 134, 0.35);
-  padding: 3px 10px;
+  padding: 3px 12px;
   border-radius: var(--radius-full);
   z-index: 2;
 }
@@ -124,20 +126,21 @@
 .platform__mobile-toggle {
   display: none;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: var(--space-lg);
+  gap: var(--space-fib-1);
+  margin-bottom: var(--space-fib-4);
 }
 
 .platform__tab {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-text-dark-muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
   font-family: var(--font-heading);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   cursor: pointer;
+  min-height: 44px; /* Fitts's Law touch minimum */
   transition: all var(--transition-fast);
 }
 
@@ -148,22 +151,22 @@
   box-shadow: 0 4px 14px rgba(123, 50, 96, 0.35);
 }
 
-/* Grid & Cards */
+/* Grid & Cards — Golden Ratio proportions */
 .platform__grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: var(--space-xl);
-  transition: grid-template-columns 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  grid-template-columns: 1.618fr 1fr; /* Golden ratio expansion */
+  gap: var(--space-fib-4); /* 34px Fibonacci gap */
+  transition: grid-template-columns 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   align-items: stretch;
 }
 
 .platform__grid:has(.platform__card--expanded:last-child) {
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 1fr 1.618fr;
 }
 
 .platform__card {
-  padding: var(--space-2xl);
-  background: rgba(255, 255, 255, 0.03);
+  padding: var(--space-fib-4); /* 34px Fibonacci card padding */
+  background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-xl);
   display: flex;
@@ -187,10 +190,10 @@
 }
 
 .platform__card--expanded {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(200, 106, 134, 0.3);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 24px rgba(123, 50, 96, 0.15);
-  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(200, 106, 134, 0.32);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(123, 50, 96, 0.16);
+  transform: translateY(-3px);
 }
 
 .platform__card--expanded::before {
@@ -198,15 +201,15 @@
 }
 
 .platform__card--compressed {
-  opacity: 0.75;
-  transform: scale(0.99);
+  opacity: 0.72;
+  transform: scale(0.995);
 }
 
 .platform__card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-fib-3); /* 21px */
 }
 
 .platform__icon {
@@ -215,45 +218,45 @@
 }
 
 .platform__role-tag {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--color-accent);
   text-transform: uppercase;
-  background: rgba(200, 106, 134, 0.12);
-  padding: 4px 10px;
+  background: rgba(200, 106, 134, 0.14);
+  padding: 5px 12px;
   border-radius: var(--radius-full);
 }
 
 .platform__card-title {
-  font-size: 1.375rem;
+  font-size: var(--font-size-h3);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-white);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-fib-1); /* 8px */
 }
 
 .platform__card-desc {
-  font-size: 0.9375rem;
-  color: var(--color-text-dark-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.618;
+  margin-bottom: var(--space-fib-4); /* 34px */
 }
 
 .platform__benefits {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-fib-2); /* 13px */
+  margin-bottom: var(--space-fib-4); /* 34px */
   flex-grow: 1;
 }
 
 .platform__benefit-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.875rem;
-  color: var(--color-text-dark-muted);
+  gap: var(--space-fib-2); /* 13px */
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
 }
 
@@ -265,19 +268,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: rgba(200, 106, 134, 0.2);
+  background: rgba(200, 106, 134, 0.22);
   color: var(--color-accent);
   font-size: 0.6875rem;
   font-weight: 800;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .platform__action-btn {
   align-self: flex-start;
+  min-height: 44px; /* Fitts's Law interactive minimum */
+  padding: 0.65rem 1.5rem;
+  font-size: var(--font-size-sm);
   transition: transform var(--transition-fast);
 }
 
