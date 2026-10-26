@@ -166,6 +166,26 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
   const [beeMood, setBeeMood] = useState<'normal' | 'happy'>('normal');
   const [eyeLook, setEyeLook] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const tabButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  // Check if tabs can scroll left or right
+  const updateScrollArrows = () => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const canScrollL = el.scrollLeft > 6;
+    const canScrollR = el.scrollLeft < el.scrollWidth - el.clientWidth - 6;
+    setShowLeftArrow(canScrollL);
+    setShowRightArrow(canScrollR);
+  };
+
+  useEffect(() => {
+    updateScrollArrows();
+    window.addEventListener('resize', updateScrollArrows);
+    return () => window.removeEventListener('resize', updateScrollArrows);
+  }, []);
 
   // Track eye movement toward cursor
   useEffect(() => {
@@ -189,10 +209,97 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Smoothly scroll the tabs row so the next option comes into frame (or previous on return)
+  const scrollToPillar = (targetId: PillarId, fromId: PillarId) => {
+    const container = tabsRef.current;
+    if (!container) return;
+
+    const fromIdx = PILLARS.findIndex((p) => p.id === fromId);
+    const targetIdx = PILLARS.findIndex((p) => p.id === targetId);
+    if (targetIdx === -1) return;
+
+    const clickedTab = tabButtonRefs.current[targetIdx];
+    if (!clickedTab) return;
+
+    const isForward = targetIdx >= fromIdx;
+    const containerWidth = container.clientWidth;
+    const currentScroll = container.scrollLeft;
+
+    if (isForward) {
+      // Forward: ensure the NEXT tab (targetIdx + 1) comes into frame
+      const nextIdx = targetIdx + 1;
+      const nextTab = nextIdx < PILLARS.length ? tabButtonRefs.current[nextIdx] : null;
+
+      if (nextTab) {
+        const nextRight = nextTab.offsetLeft + nextTab.offsetWidth;
+        const visibleRight = currentScroll + containerWidth;
+
+        if (nextRight > visibleRight - 16) {
+          const targetScroll = nextRight - containerWidth + 24;
+          const maxAllowedScroll = Math.max(0, clickedTab.offsetLeft - 12);
+          container.scrollTo({
+            left: Math.min(targetScroll, maxAllowedScroll),
+            behavior: 'smooth',
+          });
+        } else if (clickedTab.offsetLeft < currentScroll + 12) {
+          container.scrollTo({
+            left: Math.max(0, clickedTab.offsetLeft - 16),
+            behavior: 'smooth',
+          });
+        }
+      } else {
+        // Last tab: ensure fully visible at the end
+        const clickedRight = clickedTab.offsetLeft + clickedTab.offsetWidth;
+        if (clickedRight > currentScroll + containerWidth) {
+          container.scrollTo({
+            left: clickedRight - containerWidth + 16,
+            behavior: 'smooth',
+          });
+        }
+      }
+    } else {
+      // Backward: ensure the PREVIOUS tab (targetIdx - 1) comes into frame
+      const prevIdx = targetIdx - 1;
+      const prevTab = prevIdx >= 0 ? tabButtonRefs.current[prevIdx] : null;
+
+      if (prevTab) {
+        if (prevTab.offsetLeft < currentScroll + 16) {
+          const targetScroll = Math.max(0, prevTab.offsetLeft - 24);
+          const clickedRight = clickedTab.offsetLeft + clickedTab.offsetWidth;
+          const minAllowedScroll = Math.max(0, clickedRight - containerWidth + 12);
+          container.scrollTo({
+            left: Math.max(targetScroll, minAllowedScroll),
+            behavior: 'smooth',
+          });
+        } else {
+          const clickedRight = clickedTab.offsetLeft + clickedTab.offsetWidth;
+          if (clickedRight > currentScroll + containerWidth) {
+            container.scrollTo({
+              left: clickedRight - containerWidth + 16,
+              behavior: 'smooth',
+            });
+          }
+        }
+      } else {
+        // First tab: scroll back to start
+        container.scrollTo({
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
+    }
+
+    setTimeout(updateScrollArrows, 350);
+  };
+
   const handlePillarChange = (id: PillarId) => {
+    const prevId = activePillar;
     setActivePillar(id);
     setBeeState('working');
     setBeeMood('happy');
+
+    // Auto-scroll next/previous option into frame
+    scrollToPillar(id, prevId);
 
     // Trigger subtle pulse ripple
     if (containerRef.current) {
@@ -214,7 +321,39 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
     }, 1800);
   };
 
-  const currentPillar = PILLARS.find((p) => p.id === activePillar) || PILLARS[0];
+  const handleArrowStep = (direction: 'prev' | 'next') => {
+    const currentIdx = PILLARS.findIndex((p) => p.id === activePillar);
+    if (direction === 'next' && currentIdx < PILLARS.length - 1) {
+      handlePillarChange(PILLARS[currentIdx + 1].id);
+    } else if (direction === 'prev' && currentIdx > 0) {
+      handlePillarChange(PILLARS[currentIdx - 1].id);
+    } else {
+      const el = tabsRef.current;
+      if (!el) return;
+      el.scrollBy({
+        left: direction === 'next' ? 220 : -220,
+        behavior: 'smooth',
+      });
+      setTimeout(updateScrollArrows, 300);
+    }
+  };
+
+  const handleTabKeyDown = (e: React.KeyboardEvent, idx: number) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      const nextIdx = (idx + 1) % PILLARS.length;
+      handlePillarChange(PILLARS[nextIdx].id);
+      tabButtonRefs.current[nextIdx]?.focus();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prevIdx = (idx - 1 + PILLARS.length) % PILLARS.length;
+      handlePillarChange(PILLARS[prevIdx].id);
+      tabButtonRefs.current[prevIdx]?.focus();
+    }
+  };
+
+  const currentPillarIdx = PILLARS.findIndex((p) => p.id === activePillar);
+  const currentPillar = PILLARS[currentPillarIdx] || PILLARS[0];
   const mappedUserType = role === 'creator' ? 'creator' : 'brand';
 
   return (
@@ -296,21 +435,56 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
           {/* Interactive Pillars Navigation & Live Demo */}
           <div className="bee-interactive-deck">
             {/* Tabs */}
-            <div className="bee-tabs" role="tablist" aria-label="BEE Capabilities">
-              {PILLARS.map((p) => (
+            <div className="bee-tabs-wrapper">
+              {showLeftArrow && (
                 <button
-                  key={p.id}
-                  role="tab"
-                  id={`tab-${p.id}`}
-                  aria-selected={activePillar === p.id}
-                  className={`bee-tab ${activePillar === p.id ? 'bee-tab--active' : ''}`}
-                  onClick={() => handlePillarChange(p.id)}
+                  type="button"
+                  className="bee-tabs-arrow bee-tabs-arrow--left"
+                  onClick={() => handleArrowStep('prev')}
+                  aria-label="Previous capabilities"
                   data-no-network
                 >
-                  <span className="bee-tab__icon">{p.icon}</span>
-                  <span className="bee-tab__title">{p.title}</span>
+                  ‹
                 </button>
-              ))}
+              )}
+              <div
+                className="bee-tabs"
+                role="tablist"
+                aria-label="BEE Capabilities"
+                ref={tabsRef}
+                onScroll={updateScrollArrows}
+              >
+                {PILLARS.map((p, idx) => (
+                  <button
+                    key={p.id}
+                    ref={(el) => {
+                      tabButtonRefs.current[idx] = el;
+                    }}
+                    role="tab"
+                    id={`tab-${p.id}`}
+                    aria-selected={activePillar === p.id}
+                    tabIndex={activePillar === p.id ? 0 : -1}
+                    className={`bee-tab ${activePillar === p.id ? 'bee-tab--active' : ''}`}
+                    onClick={() => handlePillarChange(p.id)}
+                    onKeyDown={(e) => handleTabKeyDown(e, idx)}
+                    data-no-network
+                  >
+                    <span className="bee-tab__icon">{p.icon}</span>
+                    <span className="bee-tab__title">{p.title}</span>
+                  </button>
+                ))}
+              </div>
+              {showRightArrow && (
+                <button
+                  type="button"
+                  className="bee-tabs-arrow bee-tabs-arrow--right"
+                  onClick={() => handleArrowStep('next')}
+                  aria-label="Next capabilities"
+                  data-no-network
+                >
+                  ›
+                </button>
+              )}
             </div>
 
             {/* Active Pillar Card */}
@@ -465,6 +639,47 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
                     </div>
                   )}
                 </div>
+              </div>
+
+              {/* Capability Step Navigation Footer */}
+              <div className="bee-pillar-panel__nav">
+                <button
+                  type="button"
+                  className="bee-panel-nav-btn bee-panel-nav-btn--prev"
+                  disabled={currentPillarIdx === 0}
+                  onClick={() => currentPillarIdx > 0 && handlePillarChange(PILLARS[currentPillarIdx - 1].id)}
+                  aria-label="Previous capability"
+                  data-no-network
+                >
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M10 12l-4-4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span>{currentPillarIdx > 0 ? PILLARS[currentPillarIdx - 1].title : 'First Capability'}</span>
+                </button>
+
+                <div className="bee-pillar-panel__progress" aria-label={`Capability ${currentPillarIdx + 1} of ${PILLARS.length}`}>
+                  <span className="bee-pillar-panel__step-num">0{currentPillarIdx + 1} / 0{PILLARS.length}</span>
+                  <div className="bee-pillar-panel__track">
+                    <div
+                      className="bee-pillar-panel__bar"
+                      style={{ width: `${((currentPillarIdx + 1) / PILLARS.length) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="bee-panel-nav-btn bee-panel-nav-btn--next"
+                  disabled={currentPillarIdx === PILLARS.length - 1}
+                  onClick={() => currentPillarIdx < PILLARS.length - 1 && handlePillarChange(PILLARS[currentPillarIdx + 1].id)}
+                  aria-label="Next capability"
+                  data-no-network
+                >
+                  <span>{currentPillarIdx < PILLARS.length - 1 ? PILLARS[currentPillarIdx + 1].title : 'All Explored'}</span>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
