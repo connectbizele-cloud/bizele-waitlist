@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRole, type Role } from '../context/RoleContext';
+import Bee from './Bee';
 import './RoleSelector.css';
 
 interface RoleSelectorProps {
@@ -150,11 +151,14 @@ export default function RoleSelector({ onConfirm }: RoleSelectorProps) {
       </div>
 
       {/* Central content */}
-      <div className="rs__content">
+      <div className="rs__content" data-network-calm>
         {/* Branding */}
         <div className="rs__brand">
           <img src="/logo.png" alt="" width="44" height="44" className="rs__logo" />
           <span className="rs__wordmark">Bizele</span>
+          <div className="rs__bee-badge" title="Powered by BEE">
+            <Bee className="rs__bee-mascot" state={selected ? 'celebrating' : 'idle'} mood={selected ? 'happy' : 'normal'} wings="css" />
+          </div>
         </div>
 
         {/* Heading */}

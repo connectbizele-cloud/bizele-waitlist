@@ -48,6 +48,34 @@
   letter-spacing: -0.02em;
 }
 
+.navbar__mascot-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+  padding: 2px 7px;
+  background: rgba(123, 50, 96, 0.08);
+  border: 1px solid rgba(123, 50, 96, 0.18);
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.navbar__mascot-tag:hover {
+  background: rgba(123, 50, 96, 0.15);
+  transform: translateY(-1px);
+}
+
+.navbar__bee-mascot {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
 .navbar__links {
   display: flex;
   align-items: center;

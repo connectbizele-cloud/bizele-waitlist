@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import CounterOdometer from './CounterOdometer';
 import MagneticButton from './MagneticButton';
+import Bee from './Bee';
+import BeeAIShowcase from './BeeAIShowcase';
 import './BusinessScreen.css';
 
 interface BusinessScreenProps {
@@ -90,12 +92,13 @@ export default function BusinessScreen({ count, onJoinClick }: BusinessScreenPro
           ======================================================== */}
       <section className="hero business-hero" id="hero">
         <div className="business-hero__ambient" aria-hidden="true" />
-        <div className="container business-hero__container">
+        <div className="container business-hero__container" data-network-calm>
           {/* Left Column: Proposition & CTA */}
           <div className="business-hero__content">
             <div className="business-hero__badge">
+              <Bee className="business-hero__bee-mascot" state="working" mood="happy" wings="css" />
               <span className="business-hero__badge-dot" />
-              <span>Enterprise & Brand Cohort · Wave One</span>
+              <span>Enterprise & Brand Cohort · Powered by BEE</span>
             </div>
 
             <h1 className="business-hero__title">
@@ -415,6 +418,11 @@ export default function BusinessScreen({ count, onJoinClick }: BusinessScreenPro
       </section>
 
       {/* ========================================================
+          BEE AI GROWTH PARTNER SHOWCASE
+          ======================================================== */}
+      <BeeAIShowcase role="business" onJoinClick={onJoinClick} />
+
+      {/* ========================================================
           HOW IT WORKS FOR BUSINESSES (4 STAGES)
           ======================================================== */}
       <section
@@ -423,7 +431,7 @@ export default function BusinessScreen({ count, onJoinClick }: BusinessScreenPro
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="container">
+        <div className="container" data-network-calm>
           <div className="business-section-header">
             <span className="section__label">The 4-Stage Enterprise Pipeline</span>
             <h2 className="section__title">How High-Growth Brands Scale on Bizele</h2>

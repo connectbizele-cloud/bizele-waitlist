@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CounterOdometer from './CounterOdometer';
 import HeroCanvas from './HeroCanvas';
 import MagneticButton from './MagneticButton';
+import Bee from './Bee';
 import './Hero.css';
 import { useRole } from '../context/RoleContext';
 import { roleConfig, roleToUserType } from '../config/roleConfig';
@@ -48,13 +49,14 @@ export default function Hero({ count, onJoinClick }: HeroProps) {
       {/* Ambient background glow */}
       <div className="hero__ambient-glow" aria-hidden="true" />
 
-      <div className="container hero__container" style={heroTransformStyle}>
+      <div className="container hero__container" style={heroTransformStyle} data-network-calm>
         {/* LEFT COLUMN: ~38.2% Content & Conversion Focal Point */}
         <div className="hero__content">
           {/* Eyebrow badge */}
           <div className="hero__badge">
+            <Bee className="hero__bee-badge-icon" state="working" mood="happy" wings="css" />
             <span className="hero__badge-dot" />
-            <span>{heroContent?.badge || 'Pre-Launch — Early Access Open'}</span>
+            <span>{heroContent?.badge || 'Pre-Launch — Powered by BEE'}</span>
           </div>
 
           {/* Dominant H1 Headline */}

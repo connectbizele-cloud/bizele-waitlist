@@ -1,0 +1,191 @@
+/* ========================================================
+   BEE Mascot Animation Styles
+   Business Elevation Engine SVG styling
+   ======================================================== */
+
+/* Base SVG setup */
+svg[data-bee-state] {
+  transform-origin: center center;
+  transition: transform var(--transition-base, 260ms cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* Wings Flapping */
+.bee-wing {
+  transform-box: fill-box;
+}
+
+.bee-wing--left {
+  transform-origin: 90% 40%;
+  animation: bee-flap-left 0.16s ease-in-out infinite alternate;
+}
+
+.bee-wing--right {
+  transform-origin: 10% 40%;
+  animation: bee-flap-right 0.16s ease-in-out infinite alternate;
+}
+
+@keyframes bee-flap-left {
+  0% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  100% {
+    transform: rotate(-22deg) scaleX(0.7) translateY(-2px);
+  }
+}
+
+@keyframes bee-flap-right {
+  0% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  100% {
+    transform: rotate(22deg) scaleX(0.7) translateY(-2px);
+  }
+}
+
+/* Variable-driven wings */
+.bee-wing-var {
+  transform-box: fill-box;
+  transition: transform 0.08s ease-out;
+}
+
+.bee-wing-var--left {
+  transform-origin: 90% 40%;
+  transform: rotate(calc(-1 * var(--flap, 0deg)));
+}
+
+.bee-wing-var--right {
+  transform-origin: 10% 40%;
+  transform: rotate(var(--flap, 0deg));
+}
+
+/* Visor Eyes Blinking */
+.bee-eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: bee-blink 4.2s infinite ease-in-out;
+}
+
+@keyframes bee-blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+
+/* Smooth Eye Glances */
+.bee-pupils {
+  transform-box: fill-box;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Nozzle Core Glow Pulse */
+.bee-core {
+  animation: bee-core-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes bee-core-pulse {
+  0%, 100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 2px rgba(243, 217, 255, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(243, 217, 255, 0.95));
+  }
+}
+
+/* --- State Variants --- */
+
+/* Idle: gentle breathing / floating bob */
+[data-bee-state="idle"] {
+  animation: bee-idle-float 3.5s ease-in-out infinite;
+}
+
+@keyframes bee-idle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Working: high-speed wings, focused forward lean */
+[data-bee-state="working"] {
+  animation: bee-work-bob 1.8s ease-in-out infinite;
+}
+
+[data-bee-state="working"] .bee-wing--left {
+  animation-duration: 0.09s;
+}
+
+[data-bee-state="working"] .bee-wing--right {
+  animation-duration: 0.09s;
+}
+
+@keyframes bee-work-bob {
+  0%, 100% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1.5deg);
+  }
+}
+
+/* Celebrating: happy bounce with joy tilts */
+[data-bee-state="celebrating"] {
+  animation: bee-celebrate 1.2s ease-in-out infinite;
+}
+
+[data-bee-state="celebrating"] .bee-wing--left {
+  animation-duration: 0.11s;
+}
+
+[data-bee-state="celebrating"] .bee-wing--right {
+  animation-duration: 0.11s;
+}
+
+@keyframes bee-celebrate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-12px) rotate(-4deg) scale(1.04);
+  }
+  70% {
+    transform: translateY(-5px) rotate(3deg) scale(1.02);
+  }
+}
+
+/* Thinking: curious gentle head tilt */
+[data-bee-state="thinking"] {
+  animation: bee-think 4s ease-in-out infinite;
+}
+
+@keyframes bee-think {
+  0%, 100% {
+    transform: translateY(-2px) rotate(-2.5deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(2deg);
+  }
+}
+
+/* Hover: subtle lift */
+[data-bee-state="hover"]:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Prefers-reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bee-wing--left,
+  .bee-wing--right,
+  .bee-eyes,
+  .bee-core,
+  [data-bee-state] {
+    animation: none !important;
+    transition: none !important;
+  }
+}

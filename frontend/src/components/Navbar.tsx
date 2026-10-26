@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import MagneticButton from './MagneticButton';
+import Bee from './Bee';
 import { useRole } from '../context/RoleContext';
 import './Navbar.css';
 
@@ -25,10 +26,15 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
         <a href="/" className="navbar__brand" aria-label="Bizele home">
           <img src="/logo.png" alt="Bizele" className="navbar__logo" width="36" height="36" />
           <span className="navbar__wordmark">Bizele</span>
+          <div className="navbar__mascot-tag" title="Powered by BEE AI">
+            <Bee className="navbar__bee-mascot" state="idle" mood="happy" wings="css" />
+            <span>BEE</span>
+          </div>
         </a>
 
         <div className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
           <a href="#platform" className="navbar__link" onClick={() => setMobileOpen(false)}>Platform</a>
+          <a href="#bee-ai" className="navbar__link" onClick={() => setMobileOpen(false)}>BEE AI</a>
           <a href="#how-it-works" className="navbar__link" onClick={() => setMobileOpen(false)}>How It Works</a>
           <a href="#join" className="navbar__link" onClick={() => setMobileOpen(false)}>Early Access</a>
 

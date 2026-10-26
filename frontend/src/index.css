@@ -559,3 +559,49 @@ input, select, textarea {
     transform: translateY(0);
   }
 }
+
+/* --- Canvas & Stacking Utilities --- */
+.relative {
+  position: relative;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Page content sits above full-screen canvas */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+.navbar {
+  position: relative;
+  z-index: 50;
+}
+
+.footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Calm zones text clarity */
+[data-network-calm] {
+  position: relative;
+}
+

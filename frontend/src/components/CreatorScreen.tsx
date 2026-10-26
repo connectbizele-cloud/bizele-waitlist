@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import CounterOdometer from './CounterOdometer';
 import MagneticButton from './MagneticButton';
+import Bee from './Bee';
+import BeeAIShowcase from './BeeAIShowcase';
 import './CreatorScreen.css';
 
 interface CreatorScreenProps {
@@ -90,12 +92,13 @@ export default function CreatorScreen({ count, onJoinClick }: CreatorScreenProps
           ======================================================== */}
       <section className="hero creator-hero" id="hero">
         <div className="creator-hero__ambient" aria-hidden="true" />
-        <div className="container creator-hero__container">
+        <div className="container creator-hero__container" data-network-calm>
           {/* Left Column: Proposition & CTA */}
           <div className="creator-hero__content">
             <div className="creator-hero__badge">
+              <Bee className="creator-hero__bee-mascot" state="celebrating" mood="happy" wings="css" />
               <span className="creator-hero__badge-dot" />
-              <span>Creator Early Access · Wave One</span>
+              <span>Creator Early Access · Powered by BEE</span>
             </div>
 
             <h1 className="creator-hero__title">
@@ -392,6 +395,11 @@ export default function CreatorScreen({ count, onJoinClick }: CreatorScreenProps
       </section>
 
       {/* ========================================================
+          BEE AI GROWTH PARTNER SHOWCASE
+          ======================================================== */}
+      <BeeAIShowcase role="creator" onJoinClick={onJoinClick} />
+
+      {/* ========================================================
           HOW IT WORKS FOR CREATORS (4 STAGES)
           ======================================================== */}
       <section
@@ -400,7 +408,7 @@ export default function CreatorScreen({ count, onJoinClick }: CreatorScreenProps
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="container">
+        <div className="container" data-network-calm>
           <div className="creator-section-header">
             <span className="section__label">4 Steps to Predictable Sponsorships</span>
             <h2 className="section__title">How Creators Win on Bizele</h2>

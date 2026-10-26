@@ -59,6 +59,13 @@
   margin-bottom: var(--space-md);
 }
 
+.business-hero__bee-mascot {
+  width: 22px;
+  height: 22px;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
 .business-hero__badge-dot {
   width: 8px;
   height: 8px;

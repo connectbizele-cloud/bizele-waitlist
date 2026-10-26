@@ -228,7 +228,7 @@ export default function WaitlistModal({
         aria-modal="true"
         aria-label="Waitlist registration success"
       >
-        <div className="modal-content wm wm--animated">
+        <div className="modal-content wm wm--animated" data-network-calm>
           <button className="wm__close" onClick={onClose} aria-label="Close modal">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
@@ -258,7 +258,7 @@ export default function WaitlistModal({
       aria-modal="true"
       aria-label="Join the waitlist"
     >
-      <div className="modal-content wm wm--animated">
+      <div className="modal-content wm wm--animated" data-network-calm>
         <div className="wm__header">
           <div>
             <div className="wm__step-indicator">

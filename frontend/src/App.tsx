@@ -11,6 +11,7 @@ import BusinessScreen from './components/BusinessScreen';
 import Footer from './components/Footer';
 import WaitlistModal from './components/WaitlistModal';
 import CookieBanner from './components/CookieBanner';
+import NetworkBackground from './components/NetworkBackground';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
@@ -95,12 +96,17 @@ export default function App() {
     setTimeout(() => setSiteEntering(false), 1200);
   }
 
+  const activeNetworkRole = isConfirmed ? role : null;
+
   // Legal pages can be viewed regardless of role selection
   if (currentRoute === 'privacy') {
     return (
       <>
-        <PrivacyPolicyPage />
-        <CookieBanner />
+        <NetworkBackground role={activeNetworkRole} />
+        <div className="relative z-10">
+          <PrivacyPolicyPage />
+          <CookieBanner />
+        </div>
       </>
     );
   }
@@ -108,8 +114,11 @@ export default function App() {
   if (currentRoute === 'terms') {
     return (
       <>
-        <TermsPage />
-        <CookieBanner />
+        <NetworkBackground role={activeNetworkRole} />
+        <div className="relative z-10">
+          <TermsPage />
+          <CookieBanner />
+        </div>
       </>
     );
   }
@@ -117,8 +126,11 @@ export default function App() {
   if (currentRoute === 'cookie') {
     return (
       <>
-        <CookiePolicyPage />
-        <CookieBanner />
+        <NetworkBackground role={activeNetworkRole} />
+        <div className="relative z-10">
+          <CookiePolicyPage />
+          <CookieBanner />
+        </div>
       </>
     );
   }
@@ -127,8 +139,11 @@ export default function App() {
   if (!isConfirmed || !role) {
     return (
       <>
-        <RoleSelector onConfirm={handleRoleConfirm} />
-        <CookieBanner />
+        <NetworkBackground role={null} />
+        <div className="relative z-10">
+          <RoleSelector onConfirm={handleRoleConfirm} />
+          <CookieBanner />
+        </div>
       </>
     );
   }
@@ -136,28 +151,31 @@ export default function App() {
   const mappedUserType = roleToUserType(role);
 
   return (
-    <div className={siteEntering ? 'site-entrance' : ''} data-role={role}>
-      <Navbar
-        onJoinClick={() => openModal(mappedUserType)}
-        onSwitchRole={switchRole}
-      />
-      <main>
-        {role === 'creator' ? (
-          <CreatorScreen count={count} onJoinClick={openModal} />
-        ) : (
-          <BusinessScreen count={count} onJoinClick={openModal} />
-        )}
-      </main>
-      <Footer />
-      <WaitlistModal
-        isOpen={modalOpen}
-        onClose={closeModal}
-        onSubmit={submit}
-        isSubmitting={isSubmitting}
-        response={response}
-        defaultUserType={defaultUserType || mappedUserType}
-      />
-      <CookieBanner />
-    </div>
+    <>
+      <NetworkBackground role={role} />
+      <div className={`relative z-10 ${siteEntering ? 'site-entrance' : ''}`} data-role={role}>
+        <Navbar
+          onJoinClick={() => openModal(mappedUserType)}
+          onSwitchRole={switchRole}
+        />
+        <main className="relative z-10">
+          {role === 'creator' ? (
+            <CreatorScreen count={count} onJoinClick={openModal} />
+          ) : (
+            <BusinessScreen count={count} onJoinClick={openModal} />
+          )}
+        </main>
+        <Footer />
+        <WaitlistModal
+          isOpen={modalOpen}
+          onClose={closeModal}
+          onSubmit={submit}
+          isSubmitting={isSubmitting}
+          response={response}
+          defaultUserType={defaultUserType || mappedUserType}
+        />
+        <CookieBanner />
+      </div>
+    </>
   );
 }
