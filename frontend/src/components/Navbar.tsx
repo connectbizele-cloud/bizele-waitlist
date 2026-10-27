@@ -20,6 +20,13 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="container navbar__inner">
@@ -32,7 +39,10 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
           </div>
         </a>
 
-        <div className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
+        <div
+          id="mobile-navigation"
+          className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}
+        >
           <a href="#platform" className="navbar__link" onClick={() => setMobileOpen(false)}>Platform</a>
           <a href="#bee-ai" className="navbar__link" onClick={() => setMobileOpen(false)}>BEE AI</a>
           <a href="#how-it-works" className="navbar__link" onClick={() => setMobileOpen(false)}>How It Works</a>
@@ -72,12 +82,21 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           <span />
           <span />
           <span />
         </button>
       </div>
+      {mobileOpen && (
+        <button
+          className="navbar__backdrop"
+          type="button"
+          aria-label="Close navigation menu"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
     </nav>
   );
 }
