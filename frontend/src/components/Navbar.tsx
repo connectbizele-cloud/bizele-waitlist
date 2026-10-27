@@ -36,6 +36,7 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
           <a href="#platform" className="navbar__link" onClick={() => setMobileOpen(false)}>Platform</a>
           <a href="#bee-ai" className="navbar__link" onClick={() => setMobileOpen(false)}>BEE AI</a>
           <a href="#how-it-works" className="navbar__link" onClick={() => setMobileOpen(false)}>How It Works</a>
+          <a href="/faq" className="navbar__link" onClick={() => setMobileOpen(false)}>FAQs</a>
           <a href="#join" className="navbar__link" onClick={() => setMobileOpen(false)}>Early Access</a>
 
           {role && onSwitchRole && (

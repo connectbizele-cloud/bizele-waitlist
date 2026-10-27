@@ -168,6 +168,98 @@ input, select, textarea {
   max-width: var(--container-narrow);
 }
 
+/* Compact BEE avatar card used in the role-specific home heroes. */
+.hero-bee-card {
+  position: relative;
+  width: min(100%, 420px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  overflow: hidden;
+  border: 1px solid rgba(200, 106, 134, 0.28);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-bee-card__glow {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(200, 106, 134, 0.2), transparent 70%);
+}
+
+.hero-bee-card__avatar {
+  position: relative;
+  width: clamp(112px, 15vw, 160px);
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.hero-bee-card__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bee-card__meta,
+.hero-bee-card__capabilities,
+.hero-bee-card__cta {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-bee-card__label {
+  display: block;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-bee-card__name {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.hero-bee-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.hero-bee-card__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.hero-bee-card__capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.hero-bee-card__cap-item {
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(123, 50, 96, 0.07);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+}
+
+.hero-bee-card__cta {
+  min-height: 44px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

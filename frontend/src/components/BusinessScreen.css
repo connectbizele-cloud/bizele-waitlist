@@ -649,6 +649,48 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+.business-features-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.biz-accordion-item {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.biz-accordion-item--open {
+  border-color: rgba(200, 106, 134, 0.45);
+}
+
+.biz-accordion-item__trigger {
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-sm) var(--space-md);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: left;
+  color: #fff;
+  background: transparent;
+}
+
+.biz-accordion-item__icon { font-size: 1.2rem; }
+.biz-accordion-item__title { font-weight: 700; }
+.biz-accordion-item__metric { color: #e3a2b6; font-size: var(--font-size-xs); }
+.biz-accordion-item__chevron { color: #e3a2b6; font-size: 1.3rem; }
+
+.biz-accordion-item__body {
+  padding: 0 var(--space-md) var(--space-md) calc(var(--space-md) + 1.2rem + var(--space-sm));
+  color: rgba(255, 255, 255, 0.72);
+  font-size: var(--font-size-sm);
+}
+
 /* --- How It Works Section --- */
 .business-how {
   padding: var(--space-3xl) 0;
@@ -763,6 +805,18 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-text-muted);
+}
+
+.business-how__detail-panel {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: clamp(var(--space-lg), 4vw, var(--space-2xl));
+  display: grid;
+  gap: var(--space-sm);
+  border: 1px solid rgba(141, 38, 55, 0.12);
+  border-radius: var(--radius-xl);
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(141, 38, 55, 0.06);
 }
 
 .business-how__metrics {
@@ -1181,6 +1235,23 @@
 }
 
 @media (max-width: 640px) {
+  .biz-accordion-item__trigger {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .biz-accordion-item__metric {
+    grid-column: 2;
+  }
+
+  .biz-accordion-item__chevron {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .biz-accordion-item__body {
+    padding-left: var(--space-md);
+  }
+
   .business-how__stepper {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xs);

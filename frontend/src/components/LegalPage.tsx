@@ -42,6 +42,7 @@ export default function LegalPage({ children, title, lastUpdated }: LegalPagePro
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/cookie-policy">Cookie Policy</a>
+            <a href="/faq">FAQs</a>
             <a href="/">Home</a>
           </div>
           <p className="legal-page__copy">

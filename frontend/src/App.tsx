@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './index.css';
 import type { UserType } from './types/waitlist';
 import { useWaitlist } from './hooks/useWaitlist';
@@ -15,8 +15,9 @@ import NetworkBackground from './components/NetworkBackground';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
+import FAQPage from './pages/FAQPage';
 
-type Route = 'home' | 'privacy' | 'terms' | 'cookie';
+type Route = 'home' | 'privacy' | 'terms' | 'cookie' | 'faq';
 
 function getRoute(): Route {
   if (typeof window === 'undefined') return 'home';
@@ -33,6 +34,7 @@ function getRoute(): Route {
     return 'terms';
   }
   if (hash.startsWith('/cookie-policy') || path === '/cookie-policy') return 'cookie';
+  if (hash.startsWith('/faq') || path === '/faq') return 'faq';
 
   return 'home';
 }
@@ -44,11 +46,16 @@ export default function App() {
   const [defaultUserType, setDefaultUserType] = useState<UserType | undefined>();
   const [siteEntering, setSiteEntering] = useState(false);
   const [currentRoute, setCurrentRoute] = useState<Route>(getRoute);
+  const previousRoute = useRef(currentRoute);
 
   useEffect(() => {
     function handleLocationChange() {
-      setCurrentRoute(getRoute());
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      const nextRoute = getRoute();
+      if (nextRoute !== previousRoute.current) {
+        previousRoute.current = nextRoute;
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+      setCurrentRoute(nextRoute);
     }
 
     function handleLinkClick(e: MouseEvent) {
@@ -60,7 +67,7 @@ export default function App() {
       if (href.startsWith('#') && !href.startsWith('#/')) return;
       if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:')) return;
 
-      const legalPaths = ['/', '/privacy-policy', '/terms-and-conditions', '/terms', '/cookie-policy'];
+      const legalPaths = ['/', '/privacy-policy', '/terms-and-conditions', '/terms', '/cookie-policy', '/faq'];
       if (legalPaths.includes(href)) {
         e.preventDefault();
         window.history.pushState({}, '', href);
@@ -129,6 +136,18 @@ export default function App() {
         <NetworkBackground role={activeNetworkRole} />
         <div className="relative z-10">
           <CookiePolicyPage />
+          <CookieBanner />
+        </div>
+      </>
+    );
+  }
+
+  if (currentRoute === 'faq') {
+    return (
+      <>
+        <NetworkBackground role={activeNetworkRole} />
+        <div className="relative z-10">
+          <FAQPage />
           <CookieBanner />
         </div>
       </>

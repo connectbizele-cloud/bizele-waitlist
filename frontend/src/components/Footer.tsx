@@ -20,16 +20,9 @@ export default function Footer() {
         <div className="footer__links">
           <div className="footer__column">
             <h4 className="footer__column-title">Product</h4>
-            <a href="#platform" className="footer__link">For Brands</a>
-            <a href="#platform" className="footer__link">For Creators</a>
+            <a href="#platform" className="footer__link">Platform</a>
             <a href="#how-it-works" className="footer__link">How It Works</a>
-          </div>
-
-          <div className="footer__column">
-            <h4 className="footer__column-title">Connect</h4>
-            <a href="#" className="footer__link" aria-label="Twitter">Twitter / X</a>
-            <a href="#" className="footer__link" aria-label="Instagram">Instagram</a>
-            <a href="#" className="footer__link" aria-label="LinkedIn">LinkedIn</a>
+            <a href="/faq" className="footer__link">FAQs</a>
           </div>
 
           <div className="footer__column">

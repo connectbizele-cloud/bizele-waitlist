@@ -50,7 +50,15 @@ Click **Save and Deploy**.
 
 ### Step 5: What Happens Automatically
 - Cloudflare builds the Vite bundle to `dist/`.
-- The `frontend/public/_redirects` rule (`/* /index.html 200`) is copied into `dist/`, ensuring SPA routes (`/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`) never 404 on direct refresh.
+- The `frontend/public/_redirects` rule (`/* /index.html 200`) is copied into `dist/`, ensuring SPA routes (`/faq`, `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`) never 404 on direct refresh.
+- `frontend/public/sitemap.xml` and `frontend/public/robots.txt` are copied into `dist/` for search engine discovery. Replace the verification placeholders in `frontend/index.html` before submitting the site to Google Search Console or Bing Webmaster Tools.
+
+### Search indexing setup
+1. Deploy the site on the final custom domain.
+2. Add the domain property in [Google Search Console](https://search.google.com/search-console).
+3. Replace `REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN` in `frontend/index.html` with the token supplied by Google, then redeploy.
+4. Submit `https://your-domain.example/sitemap.xml` in Search Console under **Sitemaps**.
+5. Optionally verify the site in Bing Webmaster Tools by replacing `REPLACE_WITH_BING_WEBMASTER_VERIFICATION_TOKEN` and submitting the same sitemap.
 - The `frontend/functions/api/` folder is automatically compiled into edge functions handling:
   - `GET /api/waitlist/count`
   - `POST /api/waitlist`

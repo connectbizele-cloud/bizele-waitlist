@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import Bee from './Bee';
 import type { BeeState } from '@/types/bee';
 import type { Role } from '@/lib/role';
@@ -162,6 +162,7 @@ const PILLARS: Pillar[] = [
 
 export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcaseProps) {
   const [activePillar, setActivePillar] = useState<PillarId>('campaign');
+  const [showCapabilityDetails, setShowCapabilityDetails] = useState(false);
   const [beeState, setBeeState] = useState<BeeState>('idle');
   const [beeMood, setBeeMood] = useState<'normal' | 'happy'>('normal');
   const [eyeLook, setEyeLook] = useState({ x: 0, y: 0 });
@@ -369,12 +370,12 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
             BEE: Bizele’s AI Growth Partner
           </h2>
           <p className="bee-showcase__subtitle">
-            Think of BEE as a mix of HubSpot’s marketing automation, Calendly’s frictionless scheduling, and a senior creative strategist — handling the planning, matching, and optimizing that usually takes an entire marketing department.
+            From campaign creation to creator matching — BEE autonomously handles what used to take an entire marketing department.
           </p>
         </div>
 
         {/* Central Mascot & Interactive Stage */}
-        <div className="bee-showcase__stage">
+        <div className={`bee-showcase__stage ${showCapabilityDetails ? '' : 'bee-showcase__stage--compact'}`}>
           {/* Mascot Interactive Deck */}
           <div className="bee-mascot-card">
             <div className="bee-mascot-card__glow" aria-hidden="true" />
@@ -430,6 +431,16 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
                 </svg>
               </MagneticButton>
             </div>
+            <button
+              type="button"
+              className="btn btn--secondary btn--sm bee-mascot-card__details-toggle"
+              aria-expanded={showCapabilityDetails}
+              aria-controls="bee-capability-details"
+              onClick={() => setShowCapabilityDetails((visible) => !visible)}
+              data-no-network
+            >
+              {showCapabilityDetails ? 'Hide details' : 'Explore BEE capabilities'}
+            </button>
           </div>
 
           {/* Interactive Pillars Navigation & Live Demo */}
@@ -487,8 +498,10 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
               )}
             </div>
 
+            {showCapabilityDetails && (
+              <>
             {/* Active Pillar Card */}
-            <div className="bee-pillar-panel" role="tabpanel" aria-labelledby={`tab-${currentPillar.id}`}>
+            <div id="bee-capability-details" className="bee-pillar-panel" role="tabpanel" aria-labelledby={`tab-${currentPillar.id}`}>
               <div className="bee-pillar-panel__header">
                 <div>
                   <span className="bee-pillar-panel__badge">{currentPillar.badge}</span>
@@ -682,6 +695,8 @@ export default function BeeAIShowcase({ role = null, onJoinClick }: BeeAIShowcas
                 </button>
               </div>
             </div>
+              </>
+            )}
           </div>
         </div>
       </div>
