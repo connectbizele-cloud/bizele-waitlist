@@ -13,6 +13,13 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
   const { role } = useRole();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const scrollToTop = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -30,7 +37,7 @@ export default function Navbar({ onJoinClick, onSwitchRole }: NavbarProps) {
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="container navbar__inner">
-        <a href="/" className="navbar__brand" aria-label="Bizele home">
+        <a href="/home" className="navbar__brand" aria-label="Bizele home" onClick={scrollToTop}>
           <img src="/logo.png" alt="Bizele" className="navbar__logo" width="36" height="36" />
           <span className="navbar__wordmark">Bizele</span>
           <div className="navbar__mascot-tag" title="Powered by BEE AI">

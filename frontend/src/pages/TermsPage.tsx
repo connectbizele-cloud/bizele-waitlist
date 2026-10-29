@@ -1,284 +1,121 @@
 import LegalPage from '../components/LegalPage';
 
-/* ⚠️  DRAFT — Requires review by a qualified legal adviser before publication.
-        Placeholders are marked [PLACEHOLDER] and must be replaced with
-        verified business details before going live. */
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms &amp; Conditions" lastUpdated="20 October 2026">
-      <div className="legal-review-notice">
-        <p>
-          ⚠️ <strong>Legal Review Required.</strong> This document contains draft text and
-          unverified placeholders. It must be reviewed by a qualified legal adviser and
-          updated with accurate business details before publication. It does not constitute
-          legal advice and does not guarantee compliance with any applicable law.
-        </p>
-      </div>
-
-      <p>
-        Please read these Terms and Conditions carefully before using our website, platform
-        or services. By accessing or using Bizele, you confirm that you have read and agreed
-        to these terms.
-      </p>
-
-      <h2>1. What's in These Terms?</h2>
-      <p>
-        These Terms of Service explain the rules for using Bizele's website, platform,
-        applications, AI-powered tools and related services. They apply to all users,
-        including businesses, brands, marketers, creators and influencers.
-      </p>
-
-      <h2>2. Who We Are</h2>
-      <p>
-        Bizele is an AI-powered platform designed to help businesses grow, access business
-        intelligence, discover opportunities and connect with creators and influencers for
-        marketing and collaboration.
-      </p>
-      <p>
-        Bizele is operated by{' '}
-        <span className="legal-placeholder">[Full Legal Company Name]</span>, a company
-        incorporated in India, with its registered office at{' '}
-        <span className="legal-placeholder">[Registered Office Address, India]</span>.
-      </p>
-      <p>
-        <strong>Company Name:</strong> Bizele<br />
-        <strong>Registered Office:</strong>{' '}
-        <span className="legal-placeholder">[Insert Address]</span><br />
-        <strong>Email:</strong>{' '}
-        <span className="legal-placeholder">[Official Contact Email]</span><br />
-        <strong>Website:</strong>{' '}
-        <span className="legal-placeholder">[Website URL]</span>
-      </p>
-
-      <h2>3. Accepting These Terms</h2>
-      <p>
-        By accessing or using Bizele, you confirm that you have read and agreed to these terms.
-        If you use Bizele on behalf of a business or organisation, you confirm you have
-        authority to accept these terms on its behalf. If you do not agree, you must not use
-        our services.
-      </p>
-
-      <h2>4. Other Policies That Apply</h2>
-      <p>Your use of Bizele is also governed by:</p>
-      <ul>
-        <li>
-          <a href="/privacy-policy">Privacy Policy</a> — how we collect and process personal
-          information
-        </li>
-        <li>
-          <a href="/cookie-policy">Cookie Policy</a> — our use of cookies and similar technologies
-        </li>
-      </ul>
-      <p>These policies form part of your agreement with Bizele where applicable.</p>
-
-      <h2>5. Changes to These Terms</h2>
-      <p>
-        We may update these terms to reflect changes in our services, technology or legal
-        requirements. We will update the date shown above and provide notice of material
-        changes where appropriate. Your continued use of Bizele after updated terms take
-        effect constitutes acceptance, to the extent permitted by law.
-      </p>
-
-      <h2>6. Availability of the Service</h2>
-      <p>
-        We may modify, introduce, suspend or discontinue features to improve our platform or
-        meet operational, technical, security or legal requirements. We aim to keep Bizele
-        available and reliable but cannot guarantee uninterrupted access or error-free
-        operation. We will provide reasonable notice of significant planned changes or
-        interruptions where practicable.
-      </p>
-
-      <h2>7. Account Security</h2>
-      <p>
-        You must provide accurate information when creating an account or joining the waitlist
-        and keep your login credentials confidential. You agree to:
-      </p>
-      <ul>
-        <li>Keep your account information up to date</li>
-        <li>Prevent unauthorised access to your account</li>
-        <li>Notify us promptly of suspected account misuse</li>
-        <li>Use your account lawfully and in accordance with these terms</li>
-      </ul>
-      <p>
-        We may suspend or restrict accounts involved in fraud, security risks, unlawful
-        activity or material violations of these terms, subject to applicable law.
-      </p>
-
-      <h2>8. Intellectual Property</h2>
-      <p>
-        Bizele and its licensors retain ownership of their respective intellectual property,
-        including branding, logos, software, website design, platform features and original
-        content. You may use our services for their intended purposes but must not copy,
-        distribute, commercially exploit or reverse engineer our proprietary materials without
-        permission, except where permitted by applicable law.
-      </p>
-      <p>
-        You retain ownership of content you upload, subject to the licences described in
-        these terms.
-      </p>
-
-      <h2>9. AI-Generated Content and Recommendations</h2>
-      <p>
-        Bizele may use artificial intelligence to generate business insights, analytics,
-        growth recommendations, marketing suggestions, creator matches and other outputs.
-        AI-generated content may be inaccurate, incomplete or unsuitable for your
-        circumstances.
-      </p>
-      <p>
-        Recommendations and forecasts are informational and do not guarantee business growth,
-        revenue, sales, engagement or successful collaborations. You are responsible for
-        reviewing AI-generated outputs and making your own independent decisions. Our services
-        do not replace professional legal, financial, tax or other specialist advice.
-      </p>
-
-      <h2>10. Platform Matching and Collaborations</h2>
-      <p>
-        Bizele helps businesses, brands, marketers, creators and influencers discover
-        opportunities and facilitate potential collaborations. Unless otherwise agreed in
-        writing, Bizele provides a platform for discovery and interaction and is not
-        automatically a party to agreements between users.
-      </p>
-      <p>
-        Users are responsible for verifying information, agreeing on campaign deliverables,
-        payments, timelines, usage rights and other commercial terms. Bizele does not
-        guarantee successful matches, campaign performance, payments between users or
-        particular commercial outcomes. Users must comply with applicable advertising,
-        consumer protection, intellectual property and data protection laws.
-      </p>
-
-      <h2>11. User-Generated Content</h2>
-      <p>
-        You are responsible for any content, information, images, videos, profiles or other
-        materials you upload or share through Bizele. You confirm that you have the necessary
-        rights and permissions to provide that content and that it does not violate applicable
-        law or third-party rights.
-      </p>
-      <p>
-        You retain ownership of your content but grant Bizele a worldwide, non-exclusive,
-        royalty-free licence to host, store, reproduce, display and process it as reasonably
-        necessary to operate, provide, maintain and secure our services. We may remove content
-        or restrict access where reasonably necessary to enforce our policies, protect users
-        or comply with legal obligations.
-      </p>
-
-      <h2>12. Privacy and Personal Information</h2>
-      <p>
-        We collect and process personal information as described in our{' '}
-        <a href="/privacy-policy">Privacy Policy</a>. We handle personal information in
-        accordance with applicable Indian data protection and privacy laws, including the
-        Digital Personal Data Protection Act, 2023, and applicable rules as and when in force.
-      </p>
-
-      <h2>13. Prohibited Activities</h2>
-      <p>You must not use Bizele to:</p>
-      <ul>
-        <li>Engage in fraud, impersonation or unlawful activity</li>
-        <li>Infringe intellectual property or privacy rights</li>
-        <li>Upload malware or harmful code</li>
-        <li>Attempt unauthorised access to our systems or other accounts</li>
-        <li>Scrape or extract platform data through unauthorised means</li>
-        <li>Manipulate analytics, engagement figures or marketing results deceptively</li>
-        <li>Interfere with the security or operation of our services</li>
-      </ul>
-      <p>
-        We may investigate violations, restrict accounts and report unlawful activity to
-        relevant authorities where appropriate or required by law.
-      </p>
-
-      <h2>14. Third-Party Services</h2>
-      <p>
-        Bizele may integrate with or link to third-party services, including social media
-        platforms, payment providers, analytics tools and scheduling applications. These
-        services operate independently and may have their own terms and privacy policies.
-        We are not responsible for them except where applicable law provides otherwise.
-      </p>
-
-      <h2>15. Fees, Subscriptions and Payments</h2>
-      <p>
-        Certain Bizele features may be free, while others may require subscriptions,
-        usage-based payments or other fees. Applicable prices, taxes, billing arrangements,
-        cancellations and refund terms will be communicated before or during the relevant
-        purchase. Payments and subscriptions will be handled in accordance with applicable
-        service terms and Indian law.
-      </p>
-
-      <h2>16. Limitation of Liability</h2>
-      <p>
-        Nothing in these terms excludes or limits liability that cannot lawfully be excluded
-        or limited under Indian law. To the maximum extent permitted by law, Bizele is not
-        responsible for losses arising from reliance on AI-generated recommendations, business
-        decisions, unsuccessful collaborations, third-party service failures or temporary
-        service interruptions. We do not guarantee specific business, marketing, financial or
-        commercial results.
-      </p>
-
-      <h2>17. Suspension and Termination</h2>
-      <p>
-        You may stop using Bizele at any time and request account closure by contacting us.
-        We may suspend or terminate access for material violations of these terms, fraud,
-        security risks, unlawful activity, non-payment or other legitimate operational or
-        legal reasons. Termination does not remove obligations or rights that arose before
-        termination.
-      </p>
-
-      <h2>18. Governing Law and Jurisdiction</h2>
-      <p>
-        These Terms are governed by the laws of India. Subject to mandatory legal rights,
-        disputes arising from these terms will be subject to the jurisdiction of the competent
-        courts at{' '}
-        <span className="legal-placeholder">
-          [Insert City and State of Registered Office, India]
-        </span>
-        . Nothing in this section limits any rights available to consumers under applicable
-        Indian law.
-      </p>
-
-      <h2>19. General Provisions</h2>
-      <ul>
-        <li>
-          <strong>Entire Agreement:</strong> These terms, together with our applicable
-          policies, govern your use of Bizele.
-        </li>
-        <li>
-          <strong>Severability:</strong> If any provision is found unenforceable, the
-          remaining provisions continue to apply.
-        </li>
-        <li>
-          <strong>No Waiver:</strong> Failure to enforce a provision does not constitute a
-          waiver of our rights.
-        </li>
-        <li>
-          <strong>No Agency:</strong> Using Bizele does not automatically create a
-          partnership, employment or agency relationship.
-        </li>
-        <li>
-          <strong>Assignment:</strong> Rights and obligations may not be transferred except
-          as permitted under these terms and applicable law.
-        </li>
-      </ul>
-
-      <h2>20. Contact Us</h2>
-      <p>
-        If you have questions, concerns or complaints about these Terms, please contact us:
-      </p>
-      <p>
-        <strong>Bizele Legal</strong><br />
-        Company Name: Bizele<br />
-        Registered Office:{' '}
-        <span className="legal-placeholder">[Registered Office Address, India]</span><br />
-        Email: <span className="legal-placeholder">[Official Contact Email]</span><br />
-        Website: <span className="legal-placeholder">[Website URL]</span>
-      </p>
-
-      <hr />
-      <p>
-        <em>
-          This document is a draft prepared for review. It is not a final legal document.
-          Bizele does not guarantee that this policy constitutes legal compliance in any
-          jurisdiction. It must be reviewed by a qualified legal adviser before publication.
-        </em>
-      </p>
+    <LegalPage title="Terms of Service" lastUpdated="20 October 2026">
+      <>
+      <p key="legal-0">PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BEFORE USING OUR WEBSITE, PLATFORM OR SERVICES.</p>
+      <h2 key="legal-1">1. What's in these terms?</h2>
+      <p key="legal-2">These Terms of Service explain the rules for using Bizele's website, platform, applications, AI-powered tools and related services. They apply to all users, including businesses, brands, marketers, creators and influencers.</p>
+      <h2 key="legal-3">2. Who we are and how to contact us</h2>
+      <p key="legal-4">Bizele is an AI-powered platform designed to help businesses grow, access business intelligence, discover opportunities and connect with creators and influencers for marketing and collaboration.</p>
+      <p key="legal-5">Company Name: Bizele</p>
+      <p key="legal-6">Registered Office: Nagpur, India</p>
+      <p key="legal-7">Email: support.bizele@gmail.com</p>
+      <p key="legal-8">Website: bizele.in</p>
+      <p key="legal-9">For enquiries regarding these terms or our Services, please contact us using the email address above.</p>
+      <h2 key="legal-10">3. By using Bizele, you accept these terms</h2>
+      <p key="legal-11">By accessing or using Bizele, you confirm that you have read and agreed to these terms.</p>
+      <p key="legal-12">If you use Bizele on behalf of a business or organisation, you confirm that you have the authority to accept these terms on its behalf.</p>
+      <p key="legal-13">If you do not agree with these terms, you must not use our Services.</p>
+      <h2 key="legal-14">4. Other terms that may apply</h2>
+      <p key="legal-15">Your use of Bizele may also be governed by the following policies:</p>
+      <p key="legal-16">Privacy Policy: Explains how we collect and process personal information.</p>
+      <p key="legal-17">Cookie Policy: Explains our use of cookies and similar technologies.</p>
+      <p key="legal-18">Acceptable Use Policy: Describes permitted and prohibited activities.</p>
+      <p key="legal-19">Additional Service Terms: Apply to specific subscriptions, paid features, campaigns or other services where relevant.</p>
+      <p key="legal-20">These policies form part of your agreement with Bizele where applicable.</p>
+      <h2 key="legal-21">5. We may make changes to these terms</h2>
+      <p key="legal-22">We may update these terms to reflect changes in our Services, business operations, technology or legal requirements. We will update the date shown above and provide notice of material changes where appropriate or required by law.</p>
+      <p key="legal-23">Your continued use of Bizele after updated terms take effect constitutes acceptance, to the extent permitted by law.</p>
+      <h2 key="legal-24">6. We may change, suspend or withdraw our Services</h2>
+      <p key="legal-25">We may modify, introduce, suspend or discontinue features to improve our platform or meet operational, technical, security or legal requirements.</p>
+      <p key="legal-26">We aim to keep Bizele available and reliable but cannot guarantee uninterrupted access or error-free operation. We will provide reasonable notice of significant planned changes or interruptions where practicable.</p>
+      <h2 key="legal-27">7. Keeping your account secure</h2>
+      <p key="legal-28">You must provide accurate information when creating an account and keep your login credentials confidential.</p>
+      <p key="legal-29">You agree to:</p>
+      <p key="legal-30">Keep your account information up to date.</p>
+      <p key="legal-31">Prevent unauthorised access to your account.</p>
+      <p key="legal-32">Notify us promptly of suspected account misuse.</p>
+      <p key="legal-33">Use your account lawfully and in accordance with these terms.</p>
+      <p key="legal-34">We may suspend or restrict accounts involved in fraud, security risks, unlawful activity or material violations of these terms, subject to applicable law.</p>
+      <h2 key="legal-35">8. Intellectual property</h2>
+      <p key="legal-36">Bizele and its licensors retain ownership of their respective intellectual property, including our branding, logos, software, website design, platform features and original content.</p>
+      <p key="legal-37">You may use our Services for their intended purposes but must not copy, distribute, commercially exploit or reverse engineer our proprietary materials without permission, except were permitted by applicable law.</p>
+      <p key="legal-38">You retain ownership of content you upload, subject to the licences described in these terms.</p>
+      <h2 key="legal-39">9. AI-generated content and recommendations</h2>
+      <p key="legal-40">Bizele may use artificial intelligence to generate business insights, analytics, growth recommendations, marketing suggestions, creator matches and other outputs.</p>
+      <p key="legal-41">AI-generated content may be inaccurate, incomplete or unsuitable for your circumstances. Recommendations and forecasts are informational and do not guarantee business growth, revenue, sales, engagement or successful collaborations.</p>
+      <p key="legal-42">You are responsible for reviewing AI-generated outputs and making your own decisions. Our Services do not replace professional legal, financial, tax or other specialist advice.</p>
+      <h2 key="legal-43">10. Business growth and creator collaborations</h2>
+      <p key="legal-44">Bizele helps businesses, brands, marketers, creators and influencers discover opportunities, analyse information and facilitate potential collaborations.</p>
+      <p key="legal-45">Unless otherwise agreed in writing, Bizele provides a platform for discovery and interaction and is not automatically a party to agreements between users.</p>
+      <p key="legal-46">Users are responsible for verifying information, agreeing on campaign deliverables, payments, timelines, usage rights and other commercial terms.</p>
+      <p key="legal-47">Bizele does not guarantee successful matches, campaign performance, payments between users or particular commercial outcomes.</p>
+      <p key="legal-48">Users must comply with applicable advertising, consumer protection, intellectual property and data protection laws.</p>
+      <h2 key="legal-49">11. User-generated content</h2>
+      <p key="legal-50">You are responsible for any content, information, images, videos, profiles or other materials you upload or share through Bizele.</p>
+      <p key="legal-51">You confirm that you have the necessary rights and permissions to provide that content and that it does not violate applicable law or third-party rights.</p>
+      <p key="legal-52">You retain ownership of your content but grant Bizele a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, display and process it as reasonably necessary to operate, provide, maintain and secure our Services.</p>
+      <p key="legal-53">We will not grant other users or advertisers unrestricted commercial rights to your content merely because you upload it. Additional uses require an appropriate agreement, permission or other lawful basis.</p>
+      <p key="legal-54">We may remove content or restrict access where reasonably necessary to enforce our policies, protect users or comply with legal obligations.</p>
+      <h2 key="legal-55">12. Privacy and personal information</h2>
+      <p key="legal-56">We collect and process personal information as described in our Privacy Policy.</p>
+      <p key="legal-57">We will handle personal information in accordance with applicable Indian data protection and privacy laws, including the Digital Personal Data Protection Act, 2023, and applicable rules and requirements as and when in force and applicable.</p>
+      <p key="legal-58">You are responsible for ensuring that information you provide to Bizele is supplied lawfully and that you have the necessary permissions to share information relating to others.</p>
+      <h2 key="legal-59">13. Prohibited activities and security</h2>
+      <p key="legal-60">You must not use Bizele to:</p>
+      <p key="legal-61">Engage in fraud, impersonation or unlawful activity.</p>
+      <p key="legal-62">Infringe intellectual property or privacy rights.</p>
+      <p key="legal-63">Upload malware or harmful code.</p>
+      <p key="legal-64">Attempt unauthorised access to our systems or other accounts.</p>
+      <p key="legal-65">Scrape or extract platform data through unauthorised means.</p>
+      <p key="legal-66">Manipulate analytics, engagement figures or marketing results deceptively.</p>
+      <p key="legal-67">Interfere with the security or operation of our Services.</p>
+      <p key="legal-68">We may investigate violations, restrict accounts and report unlawful activity to relevant authorities where appropriate or required by law.</p>
+      <h2 key="legal-69">14. Third-party websites and services</h2>
+      <p key="legal-70">Bizele may integrate with or link to third-party services, including social media platforms, payment providers, analytics tools and scheduling applications.</p>
+      <p key="legal-71">These services operate independently and may have their own terms and privacy policies. We do not control their availability or practices and are not responsible for them except where applicable law provides otherwise.</p>
+      <p key="legal-72">You are responsible for reviewing third-party terms before using those services.</p>
+      <h2 key="legal-73">15. Fees, subscriptions and payments</h2>
+      <p key="legal-74">Certain Bizele features may be free, while others may require subscriptions, usage-based payments or other fees.</p>
+      <p key="legal-75">Applicable prices, taxes, billing arrangements, cancellations and refund terms will be communicated before or during the relevant purchase, as appropriate.</p>
+      <p key="legal-76">Payments, subscriptions and refunds will be handled in accordance with the applicable service terms and Indian law.</p>
+      <h2 key="legal-77">16. Limitation of liability</h2>
+      <p key="legal-78">Nothing in these terms excludes or limits liability that cannot lawfully be excluded or limited under Indian law.</p>
+      <p key="legal-79">To the maximum extent permitted by law, Bizele is not responsible for losses arising from reliance on AI-generated recommendations, business decisions, unsuccessful collaborations, third-party service failures or temporary service interruptions, except where Bizele is legally responsible.</p>
+      <p key="legal-80">We do not guarantee specific business, marketing, financial or commercial results.</p>
+      <p key="legal-81">Any limitation in this section is subject to applicable statutory rights and remedies.</p>
+      <h2 key="legal-82">17. Suspension and termination</h2>
+      <p key="legal-83">You may stop using Bizele at any time and request account closure through the available account procedures or by contacting us.</p>
+      <p key="legal-84">We may suspend or terminate access for material violations of these terms, fraud, security risks, unlawful activity, non-payment of applicable fees or other legitimate operational or legal reasons.</p>
+      <p key="legal-85">Where practicable and legally permissible, we will provide notice and an opportunity to resolve the issue.</p>
+      <p key="legal-86">Termination does not remove obligations or rights that arose before termination. Data retention and deletion will be handled in accordance with our Privacy Policy and applicable law.</p>
+      <h2 key="legal-87">18. Linking to our website</h2>
+      <p key="legal-88">You may link to Bizele's homepage provided the link is lawful and does not misrepresent an association, endorsement or partnership.</p>
+      <p key="legal-89">You must not misuse our branding, reproduce our website in a misleading manner or link to our Services in a way that infringes our rights.</p>
+      <p key="legal-90">We reserve the right to request removal of links were reasonably necessary and legally permissible.</p>
+      <h2 key="legal-91">19. Governing law and jurisdiction</h2>
+      <p key="legal-92">These Terms of Service are governed by the laws of India.</p>
+      <p key="legal-93">Subject to mandatory legal rights and jurisdictional protections, disputes arising from these terms will be subject to the jurisdiction of the competent courts at Nagpur, Maharashtra, India.</p>
+      <p key="legal-94">Nothing in this section limits any rights available to consumers under applicable Indian law.</p>
+      <h2 key="legal-95">20. General provisions</h2>
+      <p key="legal-96">Entire Agreement: These terms, together with our applicable policies and additional service agreements, govern your use of Bizele.</p>
+      <p key="legal-97">Severability: If any provision is found unenforceable, the remaining provisions will continue to apply to the extent permitted by law.</p>
+      <p key="legal-98">No Waiver: Failure to enforce a provision does not constitute a waiver of our rights.</p>
+      <p key="legal-99">No Agency: Using Bizele does not automatically create a partnership, employment or agency relationship between Bizele and any user.</p>
+      <p key="legal-100">Assignment: Rights and obligations may not be transferred except as permitted under these terms and applicable law.</p>
+      <h2 key="legal-101">21. Contact us</h2>
+      <p key="legal-102">If you have questions, concerns or complaints about these Terms of Service, please contact us:</p>
+      <p key="legal-103">Bizele</p>
+      <p key="legal-104">Legal Company Name: Bizele</p>
+      <p key="legal-105">Registered Office: Nagpur, India</p>
+      <p key="legal-106">Email: support.bizele@gmail.com</p>
+      <p key="legal-107">Website: bizele.in</p>
+      <p key="legal-108">We will make reasonable efforts to respond to enquiries within an appropriate timeframe.</p>
+      <p key="legal-109">Bizele — One ecosystem. Built for growth.</p>
+      </>
     </LegalPage>
   );
 }

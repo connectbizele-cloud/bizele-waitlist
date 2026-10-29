@@ -1,232 +1,238 @@
 import LegalPage from '../components/LegalPage';
 
-/* ⚠️  DRAFT — Requires review by a qualified legal adviser before publication.
-        Placeholders are marked [PLACEHOLDER] and must be replaced with
-        verified business details before going live. */
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="20 October 2026">
-      <div className="legal-review-notice">
-        <p>
-          ⚠️ <strong>Legal Review Required.</strong> This document contains draft text and
-          unverified placeholders. It must be reviewed by a qualified legal adviser and
-          updated with accurate business details before publication. It does not constitute
-          legal advice and does not guarantee compliance with any applicable law.
-        </p>
-      </div>
-
-      <p>
-        This Privacy Policy explains how Bizele collects, uses, stores and shares your personal
-        information when you visit our website or join our waitlist. We are committed to handling
-        your data responsibly and in accordance with applicable data protection laws.
-      </p>
-
-      <h2>1. Who We Are</h2>
-      <p>
-        Bizele is an AI-powered platform designed to help businesses and creators discover and
-        connect with each other for marketing collaborations. The platform is operated by{' '}
-        <span className="legal-placeholder">[Full Legal Company Name]</span>, a company
-        incorporated in India with its registered office at{' '}
-        <span className="legal-placeholder">[Registered Office Address, India]</span>.
-      </p>
-      <p>
-        <strong>Privacy contact email:</strong>{' '}
-        <span className="legal-placeholder">[Official Privacy Contact Email]</span><br />
-        <strong>Website:</strong>{' '}
-        <span className="legal-placeholder">[Insert official Bizele website URL]</span>
-      </p>
-
-      <h2>2. What Information We Collect</h2>
-      <h3>2.1 Information you provide directly</h3>
-      <p>When you join the Bizele waitlist, we collect:</p>
-      <ul>
-        <li>Full name</li>
-        <li>Email address</li>
-        <li>User type (Creator or Brand/Business)</li>
-        <li>
-          For Creators: social media handle and primary platform (e.g. Instagram, TikTok,
-          YouTube)
-        </li>
-        <li>
-          For Brands: brand/company name, website URL, and company size range
-        </li>
-      </ul>
-
-      <h3>2.2 Information collected automatically</h3>
-      <p>When you use our website, we may automatically collect:</p>
-      <ul>
-        <li>Technical information such as your browser type, device type and operating system</li>
-        <li>IP address and general geographic location</li>
-        <li>Pages visited, time spent on the site and interactions with content</li>
-        <li>
-          Referral sources (how you arrived at our site). This information is collected using
-          cookies and similar technologies — see our{' '}
-          <a href="/cookie-policy">Cookie Policy</a> for details.
-        </li>
-      </ul>
-
-      <h2>3. Legal Basis for Processing</h2>
-      <p>We process your personal data on the following legal bases:</p>
-      <ul>
-        <li>
-          <strong>Contractual necessity / performance:</strong> To manage your waitlist
-          registration and send you communications about your place and Bizele launch updates.
-        </li>
-        <li>
-          <strong>Legitimate interests:</strong> To improve our website, understand user
-          engagement, and operate the platform securely.
-        </li>
-        <li>
-          <strong>Consent:</strong> For optional analytics and marketing cookies, where your
-          consent is obtained before such technologies are activated.
-        </li>
-        <li>
-          <strong>Legal obligation:</strong> Where processing is required by applicable law.
-        </li>
-      </ul>
-
-      <h2>4. How We Use Your Information</h2>
-      <p>We use the information collected to:</p>
-      <ul>
-        <li>Manage your waitlist registration and secure your early access position</li>
-        <li>Send you communications about your waitlist status, launch updates, and platform news</li>
-        <li>Personalise your experience based on whether you registered as a Creator or Brand</li>
-        <li>Understand how our website is used so we can improve it (where consent is given)</li>
-        <li>Ensure the security and integrity of the platform</li>
-        <li>Meet our legal and regulatory obligations</li>
-      </ul>
-
-      <h2>5. Cookies and Tracking Technologies</h2>
-      <p>
-        We use cookies and similar technologies to operate the website and, with your consent,
-        to understand how visitors use our platform. For full details, please read our{' '}
-        <a href="/cookie-policy">Cookie Policy</a>. You can manage your preferences at any time
-        using the Cookie Settings option in the website footer.
-      </p>
-
-      <h2>6. Sharing Your Personal Data</h2>
-      <p>
-        We do not sell your personal data. We may share it in the following circumstances:
-      </p>
-      <ul>
-        <li>
-          <strong>Service providers:</strong> We work with providers that help us operate the
-          website and waitlist, including hosting providers, email delivery services and
-          analytics tools. These providers process data only on our behalf under appropriate
-          contractual safeguards.
-        </li>
-        <li>
-          <strong>Legal requirements:</strong> Where required by law, court order or lawful
-          regulatory request.
-        </li>
-        <li>
-          <strong>Business transfers:</strong> If Bizele undergoes a merger, acquisition or
-          business transfer, personal data may be disclosed as part of that process, subject
-          to applicable legal requirements.
-        </li>
-        <li>
-          <strong>With your consent:</strong> For any other purpose where you have given
-          appropriate consent.
-        </li>
-      </ul>
-
-      <h2>7. International Transfers</h2>
-      <p>
-        Bizele may use service providers or infrastructure located in countries other than
-        India. Where personal data is transferred internationally, we will comply with
-        applicable legal requirements and implement appropriate safeguards. Contact us for
-        further information about relevant transfers.
-      </p>
-
-      <h2>8. Data Retention</h2>
-      <p>
-        We retain your personal data for as long as reasonably necessary for the purposes
-        described in this policy, including:
-      </p>
-      <ul>
-        <li>Operating the waitlist and contacting you about launch access</li>
-        <li>Maintaining security and fraud prevention records</li>
-        <li>Meeting our legal obligations</li>
-      </ul>
-      <p>
-        Specific retention periods vary by data category and applicable legal requirements.{' '}
-        <span className="legal-placeholder">
-          [PLACEHOLDER: Insert verified retention periods after legal review.]
-        </span>{' '}
-        When data is no longer required, we take reasonable steps to delete or anonymise it.
-      </p>
-
-      <h2>9. Your Privacy Rights</h2>
-      <p>Depending on your location and applicable law, you may have the right to:</p>
-      <ul>
-        <li>Request access to your personal data</li>
-        <li>Request correction of inaccurate or incomplete data</li>
-        <li>Request erasure of your personal data</li>
-        <li>Object to certain processing activities</li>
-        <li>Request restriction of processing</li>
-        <li>Request portability of eligible personal data</li>
-        <li>Withdraw consent where processing is based on consent</li>
-        <li>Lodge a complaint with the relevant data protection authority</li>
-      </ul>
-      <p>
-        To exercise your rights, contact us at{' '}
-        <span className="legal-placeholder">[Official Privacy Contact Email]</span>. We may
-        request reasonable information to verify your identity and will respond within the
-        time limits required by applicable law.
-      </p>
-
-      <h2>10. Security</h2>
-      <p>
-        We take reasonable technical and organisational measures to protect personal data
-        against unauthorised access, loss or misuse. However, no internet transmission is
-        completely secure. If you believe your data has been compromised, please contact us
-        immediately.
-      </p>
-
-      <h2>11. Children's Privacy</h2>
-      <p>
-        Bizele is intended for businesses, professionals, creators and influencers. We do not
-        knowingly collect personal data from children where prohibited by applicable law.
-        If you believe a child has submitted data inappropriately, please contact us.
-      </p>
-
-      <h2>12. Marketing Communications</h2>
-      <p>
-        By joining the waitlist, you agree to receive communications about Bizele's launch and
-        platform updates. You may opt out at any time using the unsubscribe link in any email
-        or by contacting us. Opting out of marketing will not affect essential account
-        communications.
-      </p>
-
-      <h2>13. Changes to This Policy</h2>
-      <p>
-        We may update this Privacy Policy to reflect changes in our services, technology or
-        legal requirements. We will update the date shown above and provide notice of material
-        changes where appropriate or required by law.
-      </p>
-
-      <h2>14. Contact Us</h2>
-      <p>
-        If you have questions, wish to exercise your privacy rights, or have concerns about
-        how your data is handled, please contact us:
-      </p>
-      <p>
-        <strong>Bizele</strong><br />
-        Legal entity: <span className="legal-placeholder">[Full Legal Company Name]</span><br />
-        Registered Office: <span className="legal-placeholder">[Registered Office Address, India]</span><br />
-        Privacy email: <span className="legal-placeholder">[Official Privacy Contact Email]</span><br />
-        Website: <span className="legal-placeholder">[Official Bizele Website URL]</span>
-      </p>
-
-      <hr />
-      <p>
-        <em>
-          This document is a draft prepared for review. It is not a final legal document.
-          Bizele does not guarantee that this policy constitutes legal compliance in any
-          jurisdiction. It must be reviewed by a qualified legal adviser before publication.
-        </em>
-      </p>
+    <LegalPage title="Privacy Policy" lastUpdated="19 October 2026">
+      <>
+      <p key="legal-0">Welcome to Bizele's Privacy Policy. Bizele respects your privacy and is committed to protecting your personal data. This Privacy Policy will inform you of how we collect, use, store, and protect your personal data when you visit our website (regardless of where you visit it from), join our waitlist, or use our services. It will also explain your privacy rights under applicable data protection laws, including India data protection law where applicable.</p>
+      <h2 key="legal-1">1. Purpose of This Privacy Policy</h2>
+      <p key="legal-2">This Privacy Policy explains how Bizele collects and processes your personal data through your use of our website, waitlist, communications, and services, including information you may provide when interacting with our website, applications, emails, forms, and other platforms operated by or on behalf of Bizele.</p>
+      <p key="legal-3">Bizele is an AI-powered growth platform being developed to support businesses, brands, marketers, creators, and influencers through business insights, connected growth tools, creator discovery, and brand collaboration opportunities.</p>
+      <p key="legal-4">This Privacy Policy applies to visitors to our website, individuals who join our waitlist, businesses and brands interested in our services, creators and influencers who express an interest in our platform, and other individuals who communicate with us.</p>
+      <p key="legal-5">Our website and services are not intended for children who are below the minimum age permitted under applicable law, and we do not knowingly collect personal data from children where such collection is prohibited.</p>
+      <p key="legal-6">Please read this Privacy Policy alongside any additional privacy notices we may provide when collecting or processing your personal data for a specific purpose. This Policy supplements those notices and does not replace them.</p>
+      <h2 key="legal-7">2. Data Controller</h2>
+      <p key="legal-8">The data controller is the organisation responsible for determining how and why your personal data is processed.</p>
+      <p key="legal-9">Brand name: BizeleLegal entity: BizeleRegistered address: Nagpur, IndiaWebsite: bizele.inPrivacy contact: support.bizele@gmail.com</p>
+      <p key="legal-10">Where Bizele determines the purposes and means of processing your personal data, Bizele or the relevant legal entity operating the service will act as the data controller under applicable data protection law.</p>
+      <p key="legal-11">If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us using the details above.</p>
+      <p key="legal-12">Where you are protected by Indian data protection law, you may also have the right to complain to the Central Information Commission (CIC). If you are located elsewhere, you may have the right to contact the relevant data protection authority in your jurisdiction.</p>
+      <h2 key="legal-13">3. Changes to This Privacy Policy</h2>
+      <p key="legal-14">We review this Privacy Policy periodically and may update it to reflect changes in our services, website functionality, data processing practices, legal requirements, or business operations.</p>
+      <p key="legal-15">Any updated version will be published on this page, together with a revised “Last Updated” date.</p>
+      <p key="legal-16">Where required by law, we will notify affected individuals of material changes or obtain consent before introducing new processing activities that require it.</p>
+      <p key="legal-17">It is your responsibility to review this Policy periodically. We also encourage you to keep the personal data you provide to us accurate and up to date.</p>
+      <h2 key="legal-18">4. Third-Party Links</h2>
+      <p key="legal-19">Our website may contain links to third-party websites, applications, social media platforms, and other external services.</p>
+      <p key="legal-20">These third parties operate independently of Bizele and may collect or process personal data under their own privacy policies. We do not control their websites or privacy practices and are not responsible for how they handle your information.</p>
+      <p key="legal-21">If you follow a third-party link or connect to an external service, we encourage you to read that provider's privacy policy before sharing personal data.</p>
+      <h2 key="legal-22">5. The Personal Data We Collect</h2>
+      <p key="legal-23">Personal data means information that identifies you or can reasonably be linked to you. It does not include information that has been irreversibly anonymised so that you can no longer be identified.</p>
+      <p key="legal-24">Depending on how you interact with Bizele, we may collect the following categories of personal data.</p>
+      <h3 key="legal-25">5.1 Identity Data</h3>
+      <p key="legal-26">This may include your first name, last name, username, professional name, and other identifiers you provide when registering your interest in Bizele or communicating with us.</p>
+      <h3 key="legal-27">5.2 Contact Data</h3>
+      <p key="legal-28">This may include your email address, telephone number, business contact details, and other contact information you choose to provide.</p>
+      <h3 key="legal-29">5.3 Business and Brand Data</h3>
+      <p key="legal-30">For individuals representing businesses or brands, this may include:</p>
+      <p key="legal-31">Business or brand name.</p>
+      <p key="legal-32">Industry and business category.</p>
+      <p key="legal-33">Company website and public business profiles.</p>
+      <p key="legal-34">Professional role or job title.</p>
+      <p key="legal-35">Business goals and areas of interest.</p>
+      <p key="legal-36">Marketing requirements and campaign interests.</p>
+      <p key="legal-37">Information submitted through business enquiries or waitlist forms.</p>
+      <h3 key="legal-38">5.4 Creator and Influencer Data</h3>
+      <p key="legal-39">For creators and influencers, this may include:</p>
+      <p key="legal-40">Creator or professional name.</p>
+      <p key="legal-41">Social media usernames and profile links.</p>
+      <p key="legal-42">Publicly available professional biography and content niche.</p>
+      <p key="legal-43">Publicly displayed audience size and engagement information.</p>
+      <p key="legal-44">Public content, such as posts, captions, images, and videos, where relevant and lawfully obtained.</p>
+      <p key="legal-45">Preferred collaboration categories and brand interests.</p>
+      <p key="legal-46">Information you voluntarily submit when expressing interest in Bizele.</p>
+      <p key="legal-47">We will only process creator information obtained from public sources or third parties where we have an appropriate lawful basis and comply with applicable legal requirements.</p>
+      <h3 key="legal-48">5.5 Profile and Preference Data</h3>
+      <p key="legal-49">This may include your interests, preferences, feedback, survey responses, intended use of Bizele, and information about the features or services that interest you.</p>
+      <h3 key="legal-50">5.6 Technical Data</h3>
+      <p key="legal-51">When you visit our website, we or our service providers may collect technical information, depending on the tools enabled. This may include:</p>
+      <p key="legal-52">Internet Protocol (IP) address.</p>
+      <p key="legal-53">Browser type and version.</p>
+      <p key="legal-54">Device type and operating system.</p>
+      <p key="legal-55">Time zone and general location information derived from technical data.</p>
+      <p key="legal-56">Website referral information.</p>
+      <p key="legal-57">Security logs and diagnostic information.</p>
+      <h3 key="legal-58">5.7 Usage Data</h3>
+      <p key="legal-59">This may include information about how you interact with our website, such as pages visited, time spent on pages, links clicked, and website performance information.</p>
+      <p key="legal-60">The collection of this information depends on the website functionality, analytics tools, and cookie preferences you have selected.</p>
+      <h3 key="legal-61">5.8 Marketing and Communications Data</h3>
+      <p key="legal-62">This may include your communication preferences, marketing consent records where applicable, waitlist registration status, messages sent to us, and your preferences for receiving product announcements and updates.</p>
+      <h3 key="legal-63">5.9 Financial and Transaction Data</h3>
+      <p key="legal-64">Bizele's pre-launch waitlist may not require financial information. If payment functionality is introduced in the future, we may process relevant billing, transaction, and payment-status information where necessary to provide the service.</p>
+      <p key="legal-65">Payment card information, where applicable, may be handled directly by a payment service provider. The information processed will depend on the payment method and arrangements in place.</p>
+      <p key="legal-66">We will update this Policy before introducing new financial data processing practices that require additional privacy information.</p>
+      <h3 key="legal-67">5.10 Aggregated and Anonymised Data</h3>
+      <p key="legal-68">We may use aggregated or anonymised information to understand website usage, measure interest in our services, and improve our products.</p>
+      <p key="legal-69">Where information can no longer reasonably identify an individual, it may be used for statistical or analytical purposes. If aggregated information is combined with personal data in a way that identifies an individual, we will treat the combined information as personal data.</p>
+      <h3 key="legal-70">5.11 Sensitive Personal Data</h3>
+      <p key="legal-71">We do not intentionally request sensitive personal data through our general waitlist unless a specific feature or lawful requirement makes it necessary.</p>
+      <p key="legal-72">Please do not submit sensitive personal information through general website forms unless we expressly request it and explain the relevant purpose and legal basis.</p>
+      <p key="legal-73">Where sensitive personal data is processed, we will do so only were permitted by applicable law and with any additional safeguards required.</p>
+      <h3 key="legal-74">5.12 If You Do Not Provide Personal Data</h3>
+      <p key="legal-75">Some information, such as an email address, may be necessary for us to register your waitlist interest or respond to your enquiry.</p>
+      <p key="legal-76">If you choose not to provide information that is necessary for a particular purpose, we may be unable to complete that request or provide the relevant service.</p>
+      <p key="legal-77">We will explain when information is required and, where applicable, the consequences of not providing it.</p>
+      <h2 key="legal-78">6. How We Collect Personal Data</h2>
+      <p key="legal-79">We collect personal data through the following methods, depending on the features and tools available on our website.</p>
+      <h3 key="legal-80">6.1 Direct Interactions</h3>
+      <p key="legal-81">You may provide personal data when you:</p>
+      <p key="legal-82">Join the Bizele waitlist.</p>
+      <p key="legal-83">Complete a website form.</p>
+      <p key="legal-84">Submit a business or creator enquiry.</p>
+      <p key="legal-85">Subscribe to communications.</p>
+      <p key="legal-86">Contact us by email or other available channels.</p>
+      <p key="legal-87">Participate in a survey or provide feedback.</p>
+      <p key="legal-88">Express interest in early access or future platform features.</p>
+      <h3 key="legal-89">6.2 Automated Technologies</h3>
+      <p key="legal-90">When you interact with our website, technical and usage data may be collected through server logs, cookies, and similar technologies, depending on the tools implemented and your privacy preferences.</p>
+      <p key="legal-91">Where required by law, we will obtain consent before using non-essential cookies or tracking technologies.</p>
+      <h3 key="legal-92">6.3 Third Parties and Publicly Available Sources</h3>
+      <p key="legal-93">We may receive relevant information from third-party service providers, publicly accessible professional profiles, social media platforms, analytics providers, or other sources where lawful and appropriate.</p>
+      <p key="legal-94">For example, a creator's public professional profile may help us understand their content category or publicly displayed professional information.</p>
+      <p key="legal-95">Where we obtain personal data from sources other than the individual concerned, we will provide the privacy information required by applicable law, unless a lawful exception applies.</p>
+      <p key="legal-96">We do not assume that information being publicly available removes our responsibilities under data protection law.</p>
+      <h2 key="legal-97">7. How We Use Your Personal Data</h2>
+      <p key="legal-98">We use personal data only where we have a lawful basis to do so.</p>
+      <p key="legal-99">Depending on the circumstances and applicable law, our lawful bases may include:</p>
+      <p key="legal-100">Consent: Where you have freely given consent for a specific purpose.</p>
+      <p key="legal-101">Contract: Where processing is necessary to take steps at your request before entering into a contract or to perform a contract with you.</p>
+      <p key="legal-102">Legitimate interests: Where processing is necessary for our legitimate interests or those of a third party, provided these interests are not overridden by your rights and freedoms.</p>
+      <p key="legal-103">Legal obligation: Where processing is necessary to comply with a legal obligation.</p>
+      <p key="legal-104">The appropriate lawful basis depends on the specific processing activity and the laws that apply to it.</p>
+      <h3 key="legal-105">7.1 Purposes of Processing</h3>
+      <p key="legal-106">We may process your personal data to:</p>
+      <p key="legal-107">Operate and maintain our website.</p>
+      <p key="legal-108">Register and manage waitlist submissions.</p>
+      <p key="legal-109">Communicate with you about Bizele and its development.</p>
+      <p key="legal-110">Send relevant product announcements and early-access invitations.</p>
+      <p key="legal-111">Respond to enquiries and requests.</p>
+      <p key="legal-112">Understand whether you are interested in Bizele as a business, brand, marketer, creator, or influencer.</p>
+      <p key="legal-113">Assess demand for proposed platform features.</p>
+      <p key="legal-114">Improve our website, services, and user experience.</p>
+      <p key="legal-115">Maintain security, detect misuse, and prevent fraud or spam.</p>
+      <p key="legal-116">Analyse website performance and measure engagement.</p>
+      <p key="legal-117">Meet legal, regulatory, and record-keeping requirements.</p>
+      <p key="legal-118">Establish, exercise, or defend legal claims where necessary.</p>
+      <h3 key="legal-119">7.2 Waitlist and Early Access</h3>
+      <p key="legal-120">If you join our waitlist, we may use the information you provide to manage your registration, understand your interests, and contact you about Bizele's development, launch announcements, early-access opportunities, and relevant updates.</p>
+      <p key="legal-121">Joining the waitlist does not guarantee access to the platform, any particular launch date, or any specific feature.</p>
+      <p key="legal-122">You may request removal from the waitlist by contacting us using the details in this Policy. We may retain limited information where necessary to comply with legal obligations or document and respect your preferences.</p>
+      <h3 key="legal-123">7.3 Marketing Communications</h3>
+      <p key="legal-124">We may send product announcements, launch news, and other relevant communications in accordance with applicable law.</p>
+      <p key="legal-125">Where consent is required for electronic marketing, we will obtain that consent before sending such communications.</p>
+      <p key="legal-126">You may unsubscribe using the link included in a marketing email, where available, or contact us directly. Unsubscribing from marketing will not prevent us from sending essential administrative or service-related communications were permitted by law.</p>
+      <p key="legal-127">We will not treat your waitlist registration as unlimited consent to receive unrelated third-party marketing.</p>
+      <h2 key="legal-128">8. Processing Business and Creator Information</h2>
+      <p key="legal-129">Bizele is being developed as a platform serving both sides of the business growth and creator collaboration ecosystem.</p>
+      <h3 key="legal-130">8.1 Businesses and Brands</h3>
+      <p key="legal-131">If you register as a business, brand, or marketer, we may process your name, contact details, professional role, business information, stated goals, and feature preferences.</p>
+      <p key="legal-132">This information may be used to manage your waitlist registration, respond to enquiries, understand your requirements, and communicate relevant product developments.</p>
+      <h3 key="legal-133">8.2 Creators and Influencers</h3>
+      <p key="legal-134">If you register as a creator or influencer, we may process your name, contact information, social media handles, content niche, profile links, and other information you choose to provide.</p>
+      <p key="legal-135">Where relevant and lawful, publicly available professional information may be used to understand creator categories and potential brand collaboration interests.</p>
+      <h3 key="legal-136">8.3 Future Discovery and Matching Features</h3>
+      <p key="legal-137">If AI-powered creator discovery and brand matching become available, we may process relevant business and creator information to identify potential matches based on factors such as industry, content niche, campaign goals, audience characteristics, and stated preferences.</p>
+      <p key="legal-138">We will provide additional privacy information where required before introducing new processing activities, account integrations, or profiling features.</p>
+      <p key="legal-139">We will not claim to have accessed private social media accounts or connected business systems unless the relevant access has been authorised and implemented.</p>
+      <h2 key="legal-140">9. Artificial Intelligence and Automated Processing</h2>
+      <p key="legal-141">Bizele intends to develop AI-powered features to help businesses understand performance, identify growth opportunities, receive recommendations, and discover relevant creators and collaboration opportunities.</p>
+      <p key="legal-142">When such features become available, we may process information supplied by users or obtained through authorised integrations to generate insights, recommendations, summaries, or matching suggestions.</p>
+      <p key="legal-143">AI-generated outputs may be incomplete or inaccurate and should not automatically be treated as professional, financial, legal, or other specialist advice.</p>
+      <p key="legal-144">Where applicable, we will explain significant profiling or automated decision-making activities, their purposes, and the rights available to affected individuals.</p>
+      <p key="legal-145">Where applicable law provides rights relating to solely automated decisions that produce legal or similarly significant effects, we will implement the safeguards required by law.</p>
+      <p key="legal-146">We will also assess the data protection requirements associated with any new AI feature before introducing it.</p>
+      <h2 key="legal-147">10. Cookies and Similar Technologies</h2>
+      <p key="legal-148">Cookies are small files stored on your device when you visit a website. Similar technologies may be used to remember preferences, support security, and measure website performance.</p>
+      <p key="legal-149">Depending on the tools implemented, Bizele may use:</p>
+      <p key="legal-150">Strictly necessary cookies: Required for essential website functionality or security.</p>
+      <p key="legal-151">Preference cookies: Used to remember selected settings.</p>
+      <p key="legal-152">Analytics cookies: Used to understand website traffic and interactions.</p>
+      <p key="legal-153">Marketing cookies: Used for advertising measurement or relevant marketing, if implemented.</p>
+      <p key="legal-154">Where required by applicable law, we will obtain consent before placing non-essential cookies or using similar technologies.</p>
+      <p key="legal-155">You can manage or delete cookies through your browser settings and, where available, our cookie preference controls. Disabling certain cookies may affect website functionality.</p>
+      <p key="legal-156">The specific cookies used will depend on the website configuration and third-party tools in operation.</p>
+      <h2 key="legal-157">11. Sharing Your Personal Data</h2>
+      <p key="legal-158">We do not sell your personal data for money. We may share personal data in the following circumstances, were lawful and necessary.</p>
+      <h3 key="legal-159">11.1 Service Providers</h3>
+      <p key="legal-160">We may share relevant information with providers that support our operations, including website hosting providers, waitlist and form services, email providers, analytics services, security providers, and other technical service providers.</p>
+      <p key="legal-161">These providers may process information on our behalf under appropriate contractual arrangements and safeguards where required.</p>
+      <h3 key="legal-162">11.2 Professional Advisers</h3>
+      <p key="legal-163">We may share relevant information with lawyers, accountants, auditors, insurers, or other professional advisers where necessary for legitimate business, legal, or compliance purposes.</p>
+      <h3 key="legal-164">11.3 Legal and Regulatory Requirements</h3>
+      <p key="legal-165">We may disclose personal data where required by law, court order, or lawful regulatory request, or where disclosure is necessary to establish, exercise, or defend legal claims or protect the rights and safety of individuals.</p>
+      <h3 key="legal-166">11.4 Business Transfers</h3>
+      <p key="legal-167">If Bizele undergoes a merger, acquisition, restructuring, investment transaction, or transfer of relevant business assets, personal data may be disclosed or transferred as part of that transaction, subject to applicable legal requirements.</p>
+      <h3 key="legal-168">11.5 With Your Consent</h3>
+      <p key="legal-169">We may share information for an additional purpose where you have provided appropriate consent or another lawful basis permits the disclosure.</p>
+      <p key="legal-170">We do not authorise service providers to use your information for unrelated purposes merely because they provide services to Bizele.</p>
+      <h2 key="legal-171">12. International Transfers</h2>
+      <p key="legal-172">Bizele may use service providers or infrastructure located in countries other than the country where you reside.</p>
+      <p key="legal-173">Where personal data is transferred internationally, we will comply with applicable legal requirements and implement appropriate safeguards where required.</p>
+      <p key="legal-174">Depending on the circumstances, these safeguards may include adequacy decisions, approved contractual clauses, or other legally recognised transfer mechanisms.</p>
+      <p key="legal-175">You may contact us for further information about relevant international transfers and safeguards, subject to applicable law.</p>
+      <h2 key="legal-176">13. Data Security</h2>
+      <p key="legal-177">We take reasonable technical and organisational measures intended to protect personal data against unauthorised access, loss, misuse, alteration, disclosure, or destruction.</p>
+      <p key="legal-178">These measures may include access restrictions, secure service providers, appropriate account permissions, and security monitoring, depending on the systems in use.</p>
+      <p key="legal-179">However, no website, internet transmission, or electronic storage method can be guaranteed to be completely secure.</p>
+      <p key="legal-180">If a personal data breach occurs, we will assess the incident and take the steps required by applicable law, including notifying relevant authorities or affected individuals, where required.</p>
+      <h2 key="legal-181">14. Data Retention</h2>
+      <p key="legal-182">We retain personal data only for as long as reasonably necessary for the purposes for which it was collected, including operating the waitlist, responding to enquiries, communicating with users, maintaining security, and complying with legal obligations.</p>
+      <p key="legal-183">Retention periods may vary depending on the category of data, the purpose of processing, and applicable legal requirements.</p>
+      <p key="legal-184">When personal data is no longer required, we will take reasonable steps to delete it or anonymise it, subject to any lawful retention requirements.</p>
+      <p key="legal-185">You may request deletion of your personal data, although certain information may need to be retained where required by law or where another lawful basis applies.</p>
+      <h2 key="legal-186">15. Your Privacy Rights</h2>
+      <p key="legal-187">Depending on your location and the data protection laws that apply, you may have the right to:</p>
+      <p key="legal-188">Request access to your personal data.</p>
+      <p key="legal-189">Request correction of inaccurate or incomplete personal data.</p>
+      <p key="legal-190">Request erasure of your personal data.</p>
+      <p key="legal-191">Request restriction of certain processing activities.</p>
+      <p key="legal-192">Object to certain processing, including processing based on legitimate interests.</p>
+      <p key="legal-193">Request portability of eligible personal data.</p>
+      <p key="legal-194">Withdraw consent where processing is based on consent.</p>
+      <p key="legal-195">Object to direct marketing.</p>
+      <p key="legal-196">Receive information about certain automated decision-making activities.</p>
+      <p key="legal-197">Lodge a complaint with the relevant data protection authority.</p>
+      <p key="legal-198">These rights are subject to applicable legal conditions, exemptions, and limitations.</p>
+      <p key="legal-199">To exercise your rights, contact us using the details in Section 2. We may request reasonable information to verify your identity and protect your data from unauthorised disclosure.</p>
+      <p key="legal-200">We will respond within the time limits required by applicable law.</p>
+      <h3 key="legal-201">15.1 Rights Under Data Protection Law</h3>
+      <p key="legal-202">Where data protection law applies to the processing of your personal data, you may have rights under the Right to Information Act, 2005, as amended or supplemented by applicable legislation.</p>
+      <p key="legal-203">You may complain to the Central Information Commission (CIC) if you believe your personal data has been handled unlawfully. You can find information at https://cic.gov.in/ .</p>
+      <p key="legal-204">If you are located in another jurisdiction, additional or different rights may apply under the laws of that jurisdiction.</p>
+      <h2 key="legal-205">16. Marketing Preferences</h2>
+      <p key="legal-206">We aim to give you appropriate choices about marketing communications.</p>
+      <p key="legal-207">You may opt out of marketing emails at any time by using the unsubscribe option in the message, where available, or by contacting us.</p>
+      <p key="legal-208">Opting out of marketing will not necessarily prevent essential administrative communications, responses to enquiries, or other messages that we are legally permitted or required to send.</p>
+      <p key="legal-209">Where consent is the legal basis for marketing, you may withdraw that consent at any time. Withdrawal will not affect the lawfulness of processing that took place before consent was withdrawn.</p>
+      <h2 key="legal-210">17. Third-Party Services and Integrations</h2>
+      <p key="legal-211">Bizele may introduce integrations with external platforms, including social media, analytics, CRM, e-commerce, scheduling, or payment services.</p>
+      <p key="legal-212">If you choose to connect an external service in the future, the information processed will depend on the integration, the permissions you grant, and the functionality involved.</p>
+      <p key="legal-213">We will provide relevant privacy information when such features are introduced. We will not treat a link to an external profile as authorisation to access private information or account credentials.</p>
+      <p key="legal-214">Third-party services may independently process personal data under their own privacy policies.</p>
+      <h2 key="legal-215">18. Children's Privacy</h2>
+      <p key="legal-216">Bizele is intended for businesses, professionals, creators, influencers, and other eligible users.</p>
+      <p key="legal-217">We do not knowingly collect personal data from children in circumstances where such collection is prohibited by applicable law.</p>
+      <p key="legal-218">Where an applicable minimum age, parental consent requirement, or other child-protection obligation applies, we will follow the relevant requirements.</p>
+      <p key="legal-219">If you believe that a child has provided personal data to Bizele in circumstances where it should not have been collected, please contact us so that we can review the matter and take appropriate action.</p>
+      <h2 key="legal-220">19. Contact Us</h2>
+      <p key="legal-221">If you have questions about this Privacy Policy, wish to exercise your privacy rights, or have concerns about how your personal data is handled, please contact us.</p>
+      <p key="legal-222">Bizele</p>
+      <p key="legal-223">Legal entity: Bizele</p>
+      <p key="legal-224">Privacy email: support.bizele@gmail.com</p>
+      <p key="legal-225">Website: bizele.in</p>
+      <p key="legal-226">We will review your enquiry and respond in accordance with applicable data protection law.</p>
+      </>
     </LegalPage>
   );
 }
